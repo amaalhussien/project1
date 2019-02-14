@@ -10,18 +10,19 @@
 	$js 	= 'layout/js/'; // Js Directory
 
 
-
+include $lang .'english.php';
 // Include The Important Files
 include $sess .'session.php';
 include $func .'function.php';
 
-//include $lang .'english.php';
-include $lang .'arabic.php';
+
+//include $lang .'arabic.php';
 include $tpl  .'header.php';
+
 
 // Include Navbar On All Pages Expect The One With $noNavbar Vairable
 
-//if (!isset($noNavbar)) { include $tpl . 'navbar.php'; }
+if (!isset($noNavbar)) { include $tpl . 'navbar.php'; }
 
 
 

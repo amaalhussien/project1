@@ -2,7 +2,11 @@
  session_start();
  ?>
 <?php
+ $noNavbar=' ';
+ $pageTitle='log in';
 include 'init.php';
+exist();
+
 ?>
 <?php
      // Check If User Coming From HTTP Post Request
@@ -22,7 +26,7 @@ include 'init.php';
             $_SESSION['user_name']=$row['username'];
             $_SESSION['type']=$row['group_id'];
 
-            if($pass1==$row['password'])
+            if(password_verify($pass1,$row['password']))
             {
                 redicrt('dashboard.php');// Redirect To Dashboard Page
             }else{

@@ -1,10 +1,11 @@
 html,
 body {
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+    background: linear-gradient(to bottom, #003366 0%, #00ffff 100%);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
     font-family: 'Numans', sans-serif;
+    height: 100%;
+    width: 100%;
 }
 
 .container {
@@ -12,18 +13,106 @@ body {
     align-content: center;
 }
 
+.asd .formBox {
+    margin-top: 60px;
+    padding: 40px;
+}
+
+.asd .asterisk {
+    font-size: 30px;
+    position: absolute;
+    right: 30px;
+    top: 8px;
+    color: #D20707;
+}
+
+.asd .formBox .main-table {
+    -webkit-box-shadow: 0 3px 10px #CCC;
+    -moz-box-shadow: 0 3px 10px #CCC;
+    box-shadow: 0 3px 10px #CCC;
+}
+
+.asd .formBox .main-table td {
+    vertical-align: middle !important;
+}
+
+.asd .formBox .main-table .btn {
+    padding: 3px 10px;
+}
+
+.asd .formBox .main-table tr:first-child td {
+    /* You Can Use Thead */
+    background: linear-gradient(to bottom, #000066 0%, #3366cc 100%);
+    color: #FFF;
+}
+
+.asd .formBox .activate {
+    margin-left: 5px;
+}
+
+.asd .formBox h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 48px;
+}
+
+.asd .inputBox {
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+
+/* .asd .inputBox .inputText {
+    position: absolute;
+    font-size: 24px;
+    line-height: 50px;
+    transition: .5s;
+    opacity: .5;
+} */
+
+.asd .inputBox .input {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    color: #f1f1f1;
+}
+
+.asd .focus .inputText {
+    transform: translateY(-30px);
+    font-size: 18px;
+    opacity: 1;
+    color: #f4fcfd;
+}
+
+.asd .button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #03A9F4;
+    color: #fff;
+}
+
 .card {
     height: 370px;
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    background: linear-gradient(to bottom, #003366 0%, #00ffff 100%);
 }
 
 .social_icon span {
     font-size: 60px;
     margin-left: 10px;
-    color: #FFC312;
+    color: #f1f1f1;
 }
 
 .social_icon span:hover {
@@ -43,7 +132,8 @@ body {
 
 .input-group-prepend span {
     width: 50px;
-    background-color: #FFC312;
+    background-color: #f1f1f1;
+    ;
     color: black;
     border: 0 !important;
 }
@@ -51,6 +141,26 @@ body {
 input:focus {
     outline: 0 0 0 0 !important;
     box-shadow: 0 0 0 0 !important;
+}
+
+.navbar-light {
+    background: linear-gradient(to bottom, #000066 0%, #3366cc 100%);
+    color: #f1f1f1;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #f1f1f1;
+}
+
+.navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+    background: linear-gradient(to bottom, #000066 0%, #3366cc 100%);
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+    color: #f1f1f1;
+    background: linear-gradient(to bottom, #000066 0%, #3366cc 100%);
 }
 
 .remember {
@@ -65,9 +175,8 @@ input:focus {
 }
 
 .login_btn {
-    color: black;
-    background-color: #FFC312;
-    width: 100px;
+    color: #f8f9fa;
+    background: linear-gradient(to bottom, #1b3c6a 0%, #1b3c6a 100%);
 }
 
 .login_btn:hover {
@@ -75,10 +184,178 @@ input:focus {
     background-color: white;
 }
 
-.links {
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background: linear-gradient(to bottom, #000066 0%, #3366cc 100%);
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
     color: white;
 }
 
-.links a {
-    margin-left: 4px;
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
+
+
+/* Start Dashboard Page */
+
+.asd .formBox .home-stats .stat {
+    font-size: 15px;
+    color: #FFF;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.asd .formBox .home-stats .stat i {
+    position: absolute;
+    font-size: 80px;
+    top: 35px;
+    left: 30px;
+}
+
+.asd .formBox .home-stats .stat .info {
+    float: right;
+}
+
+.asd .formBox .home-stats .stat a {
+    color: #FFF;
+}
+
+.asd .formBox .home-stats .stat a:hover {
+    text-decoration: none;
+}
+
+.asd .formBox .home-stats .stat span {
+    display: block;
+    font-size: 60px;
+}
+
+.asd .formBox .home-stats .st-members {
+    background-color: #3498db;
+}
+
+.asd .formBox .home-stats .st-pending {
+    background-color: #c0392b;
+}
+
+.asd .formBox .home-stats .st-items {
+    background-color: #d35400;
+}
+
+.asd .formBox .home-stats .st-comments {
+    background-color: #8e44ad;
+}
+
+.asd .formBox .latest {
+    margin-top: 30px;
+}
+
+.asd .formBox .latest .toggle-info {
+    color: #999;
+    cursor: pointer
+}
+
+.asd .formBox .latest .toggle-info:hover {
+    color: #444;
+}
+
+.asd .formBox .latest-users {
+    margin-bottom: 0;
+}
+
+.asd .formBox .latest-users li {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.asd .formBox .latest-users li:nth-child(odd) {
+    background-color: #336a8e;
+    ;
+}
+
+.asd .formBox .latest-users .btn-success,
+.latest-users .btn-info {
+    padding: 2px 8px;
+}
+
+.asd .formBox .latest-users .btn-info {
+    margin-right: 5px;
+}
+
+.asd .formBox .latest .comment-box {
+    margin: 5px 0 10px;
+}
+
+.asd .formBox .latest .comment-box .member-n,
+.latest .comment-box .member-c {
+    float: left;
+}
+
+.asd .formBox .latest .comment-box .member-n {
+    width: 80px;
+    text-align: center;
+    margin-right: 20px;
+    position: relative;
+    top: 10px;
+}
+
+.asd .formBox .latest .comment-box .member-c {
+    width: calc(100% - 100px);
+    background-color: #EFEFEF;
+    padding: 10px;
+    position: relative;
+}
+
+.asd .formBox .latest .comment-box .member-c:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -28px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent #EFEFEF transparent transparent;
+    border-width: 15px;
+}
+
+
+/* End Dashboard Page */
