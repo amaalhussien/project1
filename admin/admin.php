@@ -32,7 +32,7 @@ if($do=='manage'){
                         {
                           
 
-							?>
+				?>
 		         <div class="formBox">
 			     <h1 class="text-center">Management of admin</h1>
 			                    <?php echo msg(); ?>
@@ -89,7 +89,7 @@ if($do=='manage'){
 	                     	</a>';
                             echo '</div>';
 
-} ?>
+						} ?>
 
 			
 
@@ -103,16 +103,26 @@ if($do=='manage'){
 				echo "<div class='container'>";
 
 					// Check If Get Request userid Is Numeric & Get The Integer Value Of It
-
+ 
 					$userid = isset($_GET['userid']) && is_numeric($_GET['userid']) ? intval($_GET['userid']) : 0;
+					$type=1;
+                    $admincheck=checkadmin('id','admin',$userid,'group_id',$type);
 
 					// Select All Data Depend On This ID
 
 					
-
 					// If There's Such ID Show The Form
-                     $check=checkItem('id','admin',$userid);
+					 $check=checkItem('id','admin',$userid);
 					if($check>0){
+				   if($admincheck>0)
+				   {
+					   		
+					$_SESSION['msg']=error_msg_delete();
+					redicrt("?do=manage");
+				   }
+				   else{
+
+				   
 					$sql="DELETE FROM `admin` WHERE id={$userid} LIMIT 1";
 						$result=mysqli_query($conn,$sql);
 							if ( $result && mysqli_affected_rows($conn)>0) {
@@ -130,7 +140,8 @@ if($do=='manage'){
 
 
 
-					}					
+					}	
+				}				
 
 
 				}elseif ($do == 'Add') { // Add Page ?> 
@@ -168,13 +179,68 @@ if($do=='manage'){
 			</div>
 
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-3">
 					<div class="inputBox">
 						<div class="inputText">Email</div>
 						<input  type="email" name="email" class="input"   required="required"  autocomplete="off"placeholder="Email Must Be Valid" >
 					</div>
 				</div>
-			</div>
+		
+		        <!--department strat -->
+				<div class="col-sm-3">
+					<div class="inputBox" style="color: black;">
+						<div class="inputText" style="color: white;" >Coleges</div>
+                        <select name="College_Name"  class="input" >
+								<option value="0"></option>
+                                <?php
+                                 $query="SELECT `id_Colleges`, `name_Colleges` FROM `colleges` ";
+                                 $result=mysqli_query($conn,$query);
+                                 $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                 foreach ($row as $u){
+                                    echo "<option value='" . $u['id_Colleges'] . "'>" . $u['name_Colleges'] . "</option>";
+                                }
+                                ?>
+                       </select>
+					</div>
+				</div>
+				<!--end dapatrment-->
+		    <!--college start -->
+			<div class="col-sm-3">
+					<div class="inputBox" style="color: black;">
+						<div class="inputText" style="color: white;" >department</div>
+                        <select name="department"  class="input" >
+								<option value="0"></option>
+                                <?php
+                                 $query="SELECT `id_department`, `name_department` FROM `department` ";
+                                 $result=mysqli_query($conn,$query);
+                                 $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                 foreach ($row as $u){
+                                    echo "<option value='" . $u['id_department'] . "'>" . $u['name_department'] . "</option>";
+                                }
+                                ?>
+                       </select>
+					</div>
+				</div>
+				<!--end colloge -->
+				<!--status start -->
+				<div class="col-sm-3">
+					<div class="inputBox" style="color: black;">
+						<div class="inputText" style="color: white;" >type</div>
+                        <select name="status" class="input">
+								<option value="0"></option>
+								<option value="1">Division registration</option>
+								<option value="2">Accounts</option>
+								<option value="3">department</option>
+								<option value="4">Sports Unit</option>
+								<option value="5">Free education</option>
+								<option value="6">College Library</option>
+								<option value="7">Central Library</option>
+							</select>
+                      
+					</div>
+				</div>
+				</div>
+
 			<div class="row">
 				<div class="col-sm-12">
 				<input type="submit" value="save" class="btn btn-lg btn-block login_btn" name="submit" >
@@ -201,6 +267,9 @@ if($do=='manage'){
 						$pass=mysqli_real_escape_string($conn,check_empty(check_input_admin($_POST["pass"])));
 						$pass=check_lenghtpass($_POST["pass"],24,8);
 						$pass1=password_hash($pass,PASSWORD_BCRYPT);
+						$college=$_POST["College_Name"];
+						$department=$_POST["department"];
+						$stauts=$_POST["status"];
 					
 				if(!empty($errors)){
 					$_SESSION['errors']=$errors;
@@ -216,8 +285,9 @@ if($do=='manage'){
 				   }else{
 
 
-				    $sql="INSERT INTO `admin`(`username`,`email`, `password`,`Regstatus`,`Date` ) VALUES
-					('{$username}','{$email}','{$pass1}',1,now())";
+				    $sql="INSERT INTO `admin`(`username`,`email`, `password`, 
+					 `Regstatus`, `Date`, `id_collegee`, `id_department`, `level`) VALUES
+					('{$username}','{$email}','{$pass1}',1,now(),'{$college}','{$department}','{$stauts}')";
 						
 						    if (mysqli_query($conn, $sql) && mysqli_affected_rows($conn)>0) {
 							$_SESSION['msg']=secusse_msg_admin();
@@ -282,12 +352,87 @@ elseif($do=='Edit'){
 						</div>
 
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-sm-3">
 								<div class="inputBox">
 									<div class="inputText">Email</div>
 									<input  type="email" name="email" class="input"  value="<?php echo $row['email'] ?>" required="required"  autocomplete="off" >
 								</div>
 							</div>
+                         <!--college start -->
+						 	        <!--department strat -->
+				<div class="col-sm-3">
+					<div class="inputBox" style="color: black;">
+						<div class="inputText" style="color: white;" >Coleges</div>
+                        <select name="College_Name"  class="input" >
+								<option value="0"></option>
+                                <?php
+                                 $query="SELECT `id_Colleges`, `name_Colleges` FROM `colleges` ";
+                                 $result=mysqli_query($conn,$query);
+                                 $row1=mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                 foreach ($row1 as $u){
+									echo "<option value='" . $u['id_Colleges'] . "'";
+									if ($row['id_collegee']== $u['id_Colleges']) 
+                                    { 
+                                        echo 'selected';
+                                    
+                                    }
+                                    
+									echo ">" . $u['name_Colleges'] . "</option>";
+                                }
+                                ?>
+                       </select>
+					</div>
+				</div>
+				  <!--college start -->
+			<div class="col-sm-3">
+					<div class="inputBox" style="color: black;">
+						<div class="inputText" style="color: white;" >department</div>
+                        <select name="department"  class="input" >
+								<option value="0"></option>
+                                <?php
+                                 $query="SELECT `id_department`, `name_department` FROM `department` ";
+                                 $result=mysqli_query($conn,$query);
+                                 $row1=mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                 foreach ($row1 as $u){
+									echo "<option value='" . $u['id_department'] . "'";
+									if ($row['id_department']== $u['id_department']) 
+                                    { 
+                                        echo 'selected';
+                                    
+                                    }
+									echo ">". $u['name_department'] . "</option>";
+                                }
+                                ?>
+                       </select>
+					</div>
+				</div>
+				<!--end colloge -->
+				<!--status start -->
+				<div class="col-sm-3">
+					<div class="inputBox" style="color: black;">
+						<div class="inputText" style="color: white;" >type</div>
+                        <select name="status" class="input">
+								<option value="0"></option>
+								<option value="1"<?php if ($row['level'] == 1) { echo 'selected'; } ?>>Division registration</option>
+								<option value="2"<?php if ($row['level'] == 2) { echo 'selected'; } ?>>Accounts</option>
+								<option value="3"<?php if ($row['level'] == 3) { echo 'selected'; } ?>>department</option>
+								<option value="4"<?php if ($row['level'] == 4) { echo 'selected'; } ?>>Sports Unit</option>
+								<option value="5"<?php if ($row['level'] == 5) { echo 'selected'; } ?>>Free education</option>
+								<option value="6"<?php if ($row['level'] == 6) { echo 'selected'; } ?>>College Library</option>
+								<option value="7"<?php if ($row['level'] == 7) { echo 'selected'; } ?>>Central Library</option>
+							</select>
+                      
+					</div>
+				</div>
+				</div>
+
+
+
+
+
+
+
+
 						</div>
 						<div class="row">
 							<div class="col-sm-12">
@@ -357,11 +502,15 @@ elseif($do=='Edit'){
 				$email 	= $_POST['email'];
 				$user=mysqli_real_escape_string($conn,($_POST["username"]));
 				$email=mysqli_real_escape_string($conn,($_POST["email"]));
+				$college=$_POST["College_Name"];
+				$department=$_POST["department"];
+				$stauts=$_POST["status"];
 				// Password Trick
 				$pass1 = empty($_POST['newpassword']) ? $_POST['oldpassword'] : password_hash($_POST['newpassword'],PASSWORD_BCRYPT);
 			    
 					  
-				      $sql="UPDATE  `admin` SET`username`='{$user}',`email`='{$email}', `password`='{$pass1}'
+				      $sql="UPDATE  `admin` SET`username`='{$user}',`email`='{$email}', `password`='{$pass1}',
+					  `id_collegee`='{$college}',`id_department`='{$department}',`level`='{$stauts}'
 					   WHERE id='{$id}'  ";
 
 					   if (mysqli_query($conn, $sql) && mysqli_affected_rows($conn)>0) {

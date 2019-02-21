@@ -56,16 +56,6 @@ function error_msg_edit(){
 
 //Access checks
 
-function check_login(){
-    if(!(isset($_SESSION['admin_id'])&&$_SESSION['type']==1)){
-        redicrt('index.php');
-    }
-}
-function exist(){
-    if(isset($_SESSION['admin_id'])&&$_SESSION['type']==1){
-        redicrt('dashboard.php');
-    }
-}
 
 
 
@@ -81,7 +71,12 @@ function secusse_msg_Edit(){
 
 
 }
-
+function check_login_employe()
+{
+    if(!(isset($_SESSION['user_id']))){
+        redicrt('index.php');
+    }
+}
 function error_msg_change(){   
     $emsg="<div class='alert alert-danger alert-dismissible'>";
     $emsg.="<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
@@ -170,6 +165,17 @@ function secusse_msg_delete(){
 
 
 }
+function secusse_msg_palent(){
+    $emsg="<div class='alert alert-success alert-dismissible'>";
+    $emsg.="<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+    $emsg.="<strong>Success!</strong>Successful palent.";
+    $emsg.="</div>";
+
+   
+    return($emsg);
+
+
+}
  //function check item
  
  function checkItem($select, $from, $value) {
@@ -192,11 +198,12 @@ function checkadmin($select,$from,$value,$type,$value2){
 }
 
 //check count 
-function countItems($item,$tabel){
+function countItems($tabel,$value){
     global $conn;
-    $sql="SELECT id FROM admin";
-    $result=mysqli_query($conn,$sql);
-    return mysqli_num_rows($result) ;;
+    $result = mysqli_query($conn, "SELECT COUNT(*) AS `count` FROM $tabel WHERE id_college=$value");
+    $row = mysqli_fetch_array($result);
+    $count = $row['count'];
+      return $count;
     
 }
 
@@ -224,6 +231,16 @@ function error_msg_delete(){
     return($emsg);
 
 }
+function error_msg_palent(){
+    $emsg="<div class='alert alert-danger alert-dismissible'>";
+    $emsg.="<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+    $emsg.="<strong>Warning!</strong>cann’t palent.";
+    $emsg.="</div>";
+
+   
+    return($emsg);
+
+}
 
 function error_msg_admin(){
 
@@ -235,11 +252,18 @@ function error_msg_admin(){
    
     return($emsg);
 }
-function getLatest($select, $table, $order, $limit = 5) {
+function fetch($select, $table,$value) {
     global $conn;
-    $query="SELECT $select FROM $table ORDER BY $order  DESC LIMIT $limit ";
+    $query="SELECT $select FROM $table WHERE id_Colleges='$value' LIMIT 1 ";
     $result=mysqli_query($conn,$query);
     $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
     return $row;
 }
 
+function fetchd($select, $table,$value) {
+    global $conn;
+    $query="SELECT $select FROM $table WHERE id_department='$value' LIMIT 1 ";
+    $result=mysqli_query($conn,$query);
+    $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
+    return $row;
+}

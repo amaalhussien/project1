@@ -5,7 +5,7 @@
  $noNavbar=' ';
  $pageTitle='log in';
 include 'init.php';
-exist();
+
 
 ?>
 <?php
@@ -16,28 +16,64 @@ exist();
     
      $username1=mysqli_real_escape_string($conn,$username);
      $pass1=mysqli_real_escape_string($conn,$pass);
-     $sql="SELECT  id,`username`,`password`,`group_id` FROM`admin` WHERE `username`='{$username1}' LIMIT 1";
+     $sql="SELECT  id,`username`,`password`,`group_id`,`level`,id_collegee,id_department FROM`admin` WHERE `username`='{$username1}' AND Regstatus=1
+      LIMIT 1";
      $result=mysqli_query($conn,$sql);
      $row=mysqli_fetch_assoc($result);
       // If Count > 0 This Mean The Database Contain Record About This Username
         if($result && mysqli_affected_rows($conn)>0)
         {
-            $_SESSION['admin_id']=$row['id'];
-            $_SESSION['admin_name']=$row['username'];
+            $_SESSION['user_id']=$row['id'];
+            $_SESSION['user_name']=$row['username'];
             $_SESSION['type']=$row['group_id'];
+            $_SESSION['level']=$row['level'];
+            $_SESSION['college']=$row['id_collegee'];
+            $_SESSION['department']=$row['id_department'];
+
 
             if(password_verify($pass1,$row['password']))
             {
-                redicrt('dashboard.php');// Redirect To Dashboard Page
-            }else{
+               if($_SESSION['level']==1){
+               redicrt('registr.php');
+
+               }elseif($_SESSION['level']==2){
+                 redicrt('accounts.php');
+
+               }elseif($_SESSION['level']==3){
+                  redicrt('department.php');
+
+               }elseif($_SESSION['level']==4){
+                redicrt('sports_unit.php');
+
+             }elseif($_SESSION['level']==3){
+                redicrt('department.php');
+             }elseif($_SESSION['level']==3){
+                redicrt('department.php');
+             }elseif($_SESSION['level']==3){
+                redicrt('department.php');
+             }elseif($_SESSION['level']==3){
+                redicrt('department.php');
+             }
+
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            else{
                
-             $_SESSION['msg']=error_msg_login();//message error
-             redicrt('index.php');//Redirect To index page
+            
             }
         }else{
             
-            $_SESSION['msg']=error_msg_login();//message error
-            redicrt('index.php');//Redirect To index page
+           
+           
         }
     
     }
@@ -59,14 +95,14 @@ exist();
 		<div class="card">
 			<div class="card-header">
                 <center>
-                <h3>Admin Login</h3>
+                <h3>Employe Login</h3>
                 <?php echo msg(); ?>
                 <?php $errors=er(); ?>
                 
                 </center>
 			</div>
 			<div class="card-body">
-                 <form  action="index.php" method='POST' >
+                 <form  action="login.php" method='POST' >
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -93,9 +129,3 @@ exist();
 
 
 
-
-
-<?php
-
-include $tpl.'footer.php';
-?>

@@ -1,0 +1,477 @@
+html,
+body {
+    background: linear-gradient(to bottom, #003366 0%, #00ffff 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Numans', sans-serif;
+    height: 100%;
+    width: 100%;
+    color: #FFF;
+}
+
+.upper-bar {
+    background-color: #5fc1cf;
+    color: #FFF;
+}
+
+.upper-bar .info {
+    margin: 4px 0
+}
+
+@media (max-width: 576px) {
+    .upper-bar .info:first-child {
+        margin-bottom: 0
+    }
+}
+
+.upper-bar span {
+    color: #324046
+}
+
+.upper-bar .get-quote {
+    display: inline-block;
+    border: 1px solid #ec1c23;
+    padding: 2px 10px;
+    margin-left: 20px;
+}
+
+@media (max-width: 576px) {
+    .upper-bar .get-quote {
+        margin-left: 5px
+    }
+}
+
+
+/*navbar start */
+
+.navbar-light {
+    background: linear-gradient(to bottom, #2d5e85 0%, #032727 100%);
+}
+
+.navbar-brand>span {
+    font-size: 30px
+}
+
+.navbar-brand span {
+    color: #FFF;
+    font-family: cursive;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-left: 20px;
+    color: #FFF;
+    font-weight: bold
+}
+
+.navbar-nav .active>.nav-link {
+    color: #ec1c23 !important
+}
+
+
+/* End Navbar */
+
+
+/* Start Slier */
+
+.slider {
+    background-color: #DDD;
+}
+
+.slider .carousel-inner {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+@media (max-width: 68px) {
+    .slider .carousel-inner {
+        justify-content: center;
+    }
+}
+
+.slider .carousel-inner h1 {
+    position: absolute;
+    color: #FFF;
+    z-index: 3;
+    font-size: 70px;
+    max-width: 900px;
+    left: 100px;
+    line-height: 1.5;
+    color: #5fc1cf;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .slider .carousel-inner h1 {
+        font-size: 40px;
+        max-width: 100%;
+        left: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .slider .carousel-inner h1 {
+        font-size: 50px
+    }
+}
+
+.slider .carousel-inner h1 span {
+    display: inline-block;
+    padding: 2px 10px;
+    font-family: cursive;
+    color: #e0dbdc;
+}
+
+.slider .carousel-inner .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 2;
+}
+
+.slider .carousel-item {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.slider .carousel-one {
+    background-image: url('images/GATE_Application-Form.jpeg');
+}
+
+.slider .carousel-two {
+    background-image: url('images/GATE_Application-Form.jpeg');
+}
+
+.slider .carousel-three {
+    background-image: url('images/GATE_Application-Form.jpeg');
+}
+
+.slider .carousel-indicators li {
+    height: 8px;
+    cursor: pointer;
+}
+
+
+/* End Slider */
+
+.overview {
+    padding: 100px;
+    background: linear-gradient(to bottom, #193b4a 100%, #21485e 0%);
+}
+
+.overview h2 {
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #FFF;
+}
+
+@media (max-width: 992px) {
+    .overview h2 {
+        font-size: 30px;
+        margin-bottom: 15px
+    }
+}
+
+.overview p {
+    line-height: 2;
+    font-size: 20px;
+    width: 80%;
+    margin: 0 auto 15px;
+    color: #FFF;
+}
+
+@media (max-width: 992px) {
+    .overview p {
+        width: 100%;
+    }
+}
+
+.overview h4 {
+    letter-spacing: 2px;
+    font-weight: normal;
+    color: #8b8a8a;
+    margin-bottom: 40px;
+}
+
+.overview button {
+    background-color: #5fc1cf;
+    color: #FFF;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 4px solid #324046;
+}
+
+
+/* End Overview */
+
+.footer {
+    padding: 10px;
+}
+
+.footer .site-info h2 {
+    font-size: 50px;
+    margin-bottom: 35px;
+}
+
+.footer .site-info h2 span:first-child {
+    color: #08526d;
+    font-weight: bold;
+}
+
+.footer .site-info h2 span:last-child {
+    color: #ec1c23;
+}
+
+.footer .site-info p {
+    line-height: 1.8;
+    color: #727272
+}
+
+.footer .site-info a {
+    color: #08526d;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.footer .site-info a:before {
+    font-family: 'FontAwesome';
+    content: "\f138";
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.footer .helpful-links {
+    align-content: inherit;
+    border-image-width: 2px;
+    position: relative;
+    content: "\f054";
+}
+
+.footer .contact ul li {
+    margin-bottom: 24px;
+}
+
+@media (max-width: 992px) {
+    .footer .helpful-links h2,
+    .footer .contact h2 {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .footer .contact ul li {
+        margin-bottom: 5px;
+    }
+}
+
+
+/* End Footer */
+
+
+/* Start Copyright */
+
+.copyright {
+    border-top: 6px solid #000000;
+    padding: 20px;
+    background-color: #1e4458;
+}
+
+.copyright ul {
+    margin: 0
+}
+
+.copyright ul li {
+    display: inline-block;
+}
+
+.copyright ul li a {
+    color: #00ffff;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+
+/* End Copyright */
+
+
+/*log in page */
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+.asd .formBox .main-table {
+    -webkit-box-shadow: 0 3px 10px #CCC;
+    -moz-box-shadow: 0 3px 10px #CCC;
+    box-shadow: 0 3px 10px #CCC;
+}
+
+.asd .formBox .main-table td {
+    vertical-align: middle !important;
+}
+
+.asd .formBox .main-table .btn {
+    padding: 3px 10px;
+}
+
+.asd .formBox .main-table tr:first-child td {
+    /* You Can Use Thead */
+    background: linear-gradient(to bottom, #000066 0%, #3366cc 100%);
+    color: #FFF;
+}
+
+.asd .formBox .activate {
+    margin-left: 5px;
+}
+
+.asd .inputBox .input {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    color: #f1f1f1;
+}
+
+.asd .focus .inputText {
+    transform: translateY(-30px);
+    font-size: 18px;
+    opacity: 1;
+    color: #f4fcfd;
+}
+
+.asd .button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #03A9F4;
+    color: #fff;
+}
+
+.card {
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background: linear-gradient(to bottom, #003366 0%, #00ffff 100%);
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #f1f1f1;
+}
+
+.card-header h3 {
+    color: white;
+}
+
+.social_icon {
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #f1f1f1;
+    ;
+    color: black;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn {
+    color: #f8f9fa;
+    background: linear-gradient(to bottom, #1b3c6a 0%, #1b3c6a 100%);
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+
+/*registertion page */
+
+.asd {
+    background: linear-gradient(to bottom, #003366 0%, #282929 100%);
+}
+
+.asd .formBox h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 48px;
+}
+
+.asd .formBox .home-stats .stat {
+    font-size: 15px;
+    color: #FFF;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    height: 125px;
+    margin: 7px;
+    padding: 30px;
+    margin-bottom: 130px;
+}
+
+.asd .formBox .home-stats .stat i {
+    position: absolute;
+    font-size: 80px;
+    top: 35px;
+    left: 30px;
+}
+
+.asd .formBox .home-stats .stat .info {
+    float: right;
+}
+
+.asd .formBox .home-stats .stat a {
+    color: #FFF;
+}
+
+.asd .formBox .home-stats .stat a:hover {
+    text-decoration: none;
+}
+
+.asd .formBox .home-stats .stat span {
+    display: block;
+    font-size: 60px;
+}
+
+.asd .formBox .home-stats .st-members {
+    background-color: #3498db;
+    width: initial;
+}
+
+.asd .formBox .home-stats .st-pending {
+    background-color: #c0392b;
+}
+
+
+/* End Contact us */
+
+
+/*تجربها الكارد */

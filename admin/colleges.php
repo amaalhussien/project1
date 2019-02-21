@@ -46,7 +46,8 @@ if($do=='manage'){
                            echo "<td>" . $row['description'] . "</td>";
                            echo "<td>
                                <a href='colleges.php?do=Edit&id_Colleges=".$row['id_Colleges'] ."' class='btn btn-success' ><i class='fa fa-edit'></i> Edit</a>
-                               <a href='colleges.php?do=Delete&id_Colleges=" . $row['id_Colleges'] . "' class='btn btn-danger confirm s><i class='fa fa-close'></i> Delete </a>";
+                               <a href='colleges.php?do=Delete&id_Colleges=" . $row['id_Colleges'] . "' 
+                               class='btn btn-danger confirm s><i class='fa fa-close'></i> Delete </a>";
                            echo "</td>";
                        echo "</tr>";
                    }
@@ -255,7 +256,9 @@ elseif($do=='insert'){ //insert page
                                                    <div class="col-sm-6">
                                                        <div class="inputBox">
                                                            <div class="inputText"> Name College</div>
-                                                           <input type="text" class="input"  name="name" autocomplete="off" value="<?php echo $row['name_Colleges'] ?>" required="required" >
+                                                           <input type="text" class="input"  
+                                                           name="name" autocomplete="off"
+                                                            value="<?php echo $row['name_Colleges'] ?>" required="required" >
                                                        </div>
                                                    </div>  
                                                </div>
@@ -264,9 +267,10 @@ elseif($do=='insert'){ //insert page
                                                    <div class="col-sm-12">
                                                        <div class="inputBox">
                                                        <div class="inputText"> description</div>
-                                                          <textarea  type="email" name="description" class="input"   
-                                                             value="<?php echo $row['description'] ?>"
-                                                             required="required"  autocomplete="off"  rows="5" ></textarea>
+                                                          <textarea  type="text" name="description" class="input"  
+                                                             required="required"  autocomplete="off"  rows="5" >
+                                                             <?php echo $row['description'] ?>
+                                                             </textarea>
                                                            
                                                        </div>
                                                    </div>

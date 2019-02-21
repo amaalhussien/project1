@@ -1,9 +1,9 @@
 
  <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="dashboard.php">Dashboard</a>
   <a href="admin.php">Admin area</a>
-  <a href="dashboard.php">Services</a>
-  <a href="colleges.php">Clients</a>
+  <a href="colleges.php">colleges</a>
   <a href="department.php">department</a>
 </div>
 
@@ -21,18 +21,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#"><?php echo lang('HOME_ADMIN');?><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="dashboard.php"><?php echo lang('HOME_ADMIN');?><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="page.php">Link</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          <?php echo $_SESSION['admin_name']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="admin.php?do=Edit&userid=<?php echo $_SESSION['user_id']?>">EditProfile</a>
+          <a class="dropdown-item" href="admin.php?do=Edit&userid=<?php echo $_SESSION['admin_id']?>">EditProfile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout.php">Logout</a>
         </div>
