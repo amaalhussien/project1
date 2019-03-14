@@ -23,8 +23,9 @@ include $tpl  .'header.php';
 
 
 // Include Navbar On All Pages Expect The One With $noNavbar Vairable
-
+if (!isset($slideNavbar)) { include $tpl . 'navbar2.php'; }
 if (!isset($noNavbar)) { include $tpl . 'navbar.php'; }
+
 
 
 

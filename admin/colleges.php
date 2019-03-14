@@ -74,7 +74,7 @@ if($do=='manage'){
    
 
 
-</div>
+
 
 <?php 
       

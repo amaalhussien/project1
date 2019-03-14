@@ -267,3 +267,42 @@ function fetchd($select, $table,$value) {
     $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
     return $row;
 }
+
+
+
+
+
+
+function redirectHome($url = null, $seconds =0) {
+
+    if ($url === null) {
+
+        $url = 'index.php';
+
+        $link = 'Homepage';
+
+    } else {
+
+        if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== '') {
+
+            $url = $_SERVER['HTTP_REFERER'];
+
+            $link = 'Previous Page';
+
+        } else {
+
+            $url = 'index.php';
+
+            $link = 'Homepage';
+
+        }
+
+    }
+
+
+    header("refresh:$seconds;url=$url");
+
+    exit();
+
+}
+

@@ -1,6 +1,8 @@
 <?php
 $pageTitle='Internal_section';
+
 include 'init.php';
+check_login_employe();
 ?>
 <?php
  $do = isset($_GET['do']) ? $_GET['do'] : 'manage';

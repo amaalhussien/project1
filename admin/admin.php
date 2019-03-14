@@ -26,7 +26,7 @@ if($do=='manage'){
 
 				$sql = 'AND RegStatus = 0';
 			}
-	               $query="SELECT `id`, `username`, `email`,Regstatus ,Date FROM `admin` WHERE `group_id`!=1  $sql";
+	               $query="SELECT `id`, `username`, `email`,Regstatus ,`level`,Date FROM `admin` WHERE `group_id`!=1  $sql";
                         $result=mysqli_query($conn,$query);
                         if(mysqli_num_rows($result)>0)
                         {
@@ -34,19 +34,25 @@ if($do=='manage'){
 
 				?>
 		         <div class="formBox">
-			     <h1 class="text-center">Management of admin</h1>
+				 <h1 class="text-center">Management of admin</h1>
+
 			                    <?php echo msg(); ?>
                                 <?php $errors=er(); ?>
                                   <?php errors_function($errors);
                              ?>
 			<div class="container">
+			<a href="admin.php?do=Add" class="btn btn-primary">
+					<i class="fa fa-plus"></i> New Admin
+				</a>
 				<div class="table-responsive">
 					<table class="main-table text-center table table-bordered" >
 						<tr>
 							<td>#ID</td>
 							<td>Username</td>
 							<td>Email</td>
+							<td>Level</td>
 							<td>Registered Date</td>
+							
 							<td>Control</td>
 						</tr>
 						<?php 
@@ -56,6 +62,41 @@ if($do=='manage'){
 									echo "<td>" . $row['id'] . "</td>";
 									echo "<td>" . $row['username'] . "</td>";
 									echo "<td>" . $row['email'] . "</td>";
+									echo "<td>" ;
+
+									if($row['level']==1){
+										echo "Division registration";
+
+									}elseif($row['level']==2){
+										echo "Accounts";
+										
+									
+									}elseif($row['level']==3)
+									{
+										echo "department";
+									}
+									elseif($row['level']==4){
+										echo "Sports Unit";
+									}
+									elseif($row['level']==5){
+										echo "Free education";
+								
+									}	elseif($row['level']==6){
+										echo "College Library";
+									}
+									elseif($row['level']==7){
+										echo "Central Library";
+									}
+									elseif($row['level']==8){
+										echo "Internal_section";
+									}
+									echo  "</td>";
+									
+
+
+
+
+
 									echo "<td>" . $row['Date'] ."</td>";
 									echo "<td>
 										<a href='admin.php?do=Edit&userid=".$row['id'] . "' class='btn btn-success' ><i class='fa fa-edit'></i> Edit</a>
@@ -76,16 +117,16 @@ if($do=='manage'){
 					</table>
 				</div>
 				<a href="admin.php?do=Add" class="btn btn-primary">
-					<i class="fa fa-plus"></i> New Member
+					<i class="fa fa-plus"></i> New Admin
 				</a>
 			</div>
 
 			<?php } else {
 
-                         echo '<div class="container">';
+                     echo '<div class="container">';
                     	echo '<div class="nice-message">There\'s No Members To Show</div>';
 	                    echo '<a href="admin.php?do=Add" class="btn btn-primary">
-			            <i class="fa fa-plus"></i> New Member
+			            <i class="fa fa-plus"></i> New Admin
 	                     	</a>';
                             echo '</div>';
 
@@ -235,6 +276,7 @@ if($do=='manage'){
 								<option value="5">Free education</option>
 								<option value="6">College Library</option>
 								<option value="7">Central Library</option>
+								<option value="8">Internal_section</option>
 							</select>
                       
 					</div>

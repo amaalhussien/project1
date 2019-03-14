@@ -1,8 +1,11 @@
 <?php
 $pageTitle='registrition';
+
+$noNavbar='  ';
 include 'init.php';
 check_login_employe();
 ?>
+<div class="asd">
 <?php
 global $college;
 $college=$_SESSION['college'];
@@ -13,7 +16,9 @@ foreach ($namecollege as $coll){
  $do = isset($_GET['do']) ? $_GET['do'] : 'manage';
  if($do=='manage'){ 
    ?>
+
     <div class="formBox">
+        <div class="dr" style="margin-top:89px;">
     <div class="row">
                  <div class="col-sm-12">
                      <h1> شعبة التسجيل <?php echo $coll['name_Colleges'] ?></h1>
@@ -25,9 +30,11 @@ foreach ($namecollege as $coll){
            </div>
     <div class="home-stats">
           <div class="container text-center">
-              <h1>Dashboard</h1>
+             
               <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-2">
+            </div>
+              <div class="col-md-4">
                       <div class="stat st-members">
                           <i class="fa fa-user-plus"></i>
                           <div class="info">
@@ -43,7 +50,7 @@ foreach ($namecollege as $coll){
                       </div>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                       <div class="stat st-pending">
                           <i class="fa fa-graduation-cap"></i>
                           <div class="info">
@@ -60,7 +67,7 @@ foreach ($namecollege as $coll){
              </div>
         </div>
    </div>
-
+   </div>
    <?php
 
 
@@ -104,8 +111,8 @@ foreach ($namecollege as $coll){
                                        <select name="department"  class="input" >
                                          <option value="0"></option>
                                  <?php
-                                       $query="SELECT `id_department`, `name_department` FROM `department`
-                                              WHERE id_department=$college  ";
+                                       $query="SELECT `id_department`,`college_id`, `name_department` FROM `department`
+                                              WHERE college_id=$college";
                                                   $result=mysqli_query($conn,$query);
                                                     $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
                                                       foreach ($row as $u){
@@ -157,8 +164,8 @@ if (isset($_POST["import"]))
 {
     
                     
-					 $department=$_POST["department"];
-					 $stauts=$_POST["status"];
+ $department=$_POST["department"];
+ $stauts=$_POST["status"];
   $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
   
   if(in_array($_FILES["file"]["type"],$allowedFileType)){
@@ -186,11 +193,20 @@ if (isset($_POST["import"]))
                 if(isset($Row[1])) {
                     $lastname = mysqli_real_escape_string($conn,$Row[1]);
                 }
-                
-                if (!empty($fristname) || !empty($lastname)) {
-                    $query = "insert into student(`frist_name`, `last_name`,
+                $phase = "";
+                if(isset($Row[2])) {
+                    $phase = mysqli_real_escape_string($conn,$Row[2]);
+                }
+                $section = "";
+                if(isset($Row[3])) {
+                    $section = mysqli_real_escape_string($conn,$Row[3]);
+                }
+              
+
+                if (!empty($fristname)||!empty($lastname)||!empty($phase)||!empty($section)) {
+                    $query = "insert into student(`frist_name`, `last_name`,`Internal_section`,`phase`,
                     `id_department`,`id_college`,`status`)  VALUES
-                    ('{$fristname}','{$lastname}','{$department}','{$college}','{$stauts}'
+                    ('{$fristname}','{$lastname}','{$section}','{$phase}','{$department}','{$college}','{$stauts}'
                     )";
                     $result = mysqli_query($conn, $query);
                 
@@ -229,14 +245,15 @@ if (isset($_POST["import"]))
              </div>
 
        <?php
-      $query="SELECT student.*, 
-      colleges.name_Colleges AS College_Name, 
-        department.name_department AS department 
-            FROM student
-         INNER JOIN colleges ON colleges.id_Colleges=student.id_college 
-        INNER JOIN department ON department.id_department=student.id_college
-        WHERE(student.id_college=$college)
-        ";
+     $query="SELECT student.*, 
+     colleges.name_Colleges AS College_Name, 
+      department.name_department AS department 
+    FROM student
+        INNER JOIN colleges ON colleges.id_Colleges=student.id_college 
+       INNER JOIN department ON department.id_department=student.id_department
+       WHERE(student.id_college=$college)
+       ";
+
          $result=mysqli_query($conn,$query);
          if(mysqli_num_rows($result)>0)
          {
@@ -245,30 +262,30 @@ if (isset($_POST["import"]))
 
 
       ?>
-    <div class="container">
-    <hr style="border-top: 3px solid rgb(241, 25, 25)";>
-    <div class="row">
-        <div class="panel panel-primary filterable">
-            <div class="panel-heading">
-                <h3 class="panel-title">Student info</h3>
-                <div class="pull-right">
-                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-                </div>
-            </div>
-            <table id="testTable"
-            class="main-table text-center table table-bordered"
-            style="background-color:#214860; color:#fff;"
-            >
+   <div class="container">
+   <hr style="border-top: 3px solid rgb(241, 25, 25)";>
+    <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>عرض الطلاب</h5>
+                    </div>
+           <div class="ibox-content">
+           <table  id="example" class="table table-striped table-bordered table-hover  table-responsive
+           dataTables-example" 
+         style="width:100%;
+            background-color:#214860; color:#fff;">
                 <thead>
-                    <tr class="filters" style="background-color:#214860; color:#fff;">
+                <tr class="filters" style="background-color:#214860; color:#fff;">
                         <th>#ID</th>
-                        <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="lastName" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="department" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="status" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="phase" disabled></th>
+                        <th>Control</th>
                         <th>Control</th>
                         <th>patent</th>
+                        <th>Control</th>
+                        <th>patent</th>
+                        <th>Control</th>
+                        <th>patent</th
                     </tr>
                 </thead>
                 <tbody>
@@ -355,13 +372,12 @@ if (isset($_POST["import"]))
                     if ( $result && mysqli_affected_rows($conn)>0) {
                             
                             
-                        $_SESSION['msg']=secusse_msg_palent();
-                        redicrt("?do=viwe");
+                        redirectHome('back');
                             
                         }else{
                             
-                            $_SESSION['msg']= error_msg_palent();
-                            redicrt("?do=viwe");
+                            
+                            redirectHome('back');
                             }
                 
 
@@ -392,14 +408,13 @@ if (isset($_POST["import"]))
                     if ( $result && mysqli_affected_rows($conn)>0) {
                             
                             
-                        $_SESSION['msg']=secusse_msg_palent();
-                        redicrt("?do=viwe");
+                        redirectHome('back');
                             
                         }else{
                             
-                            $_SESSION['msg']= error_msg_palent();
-                            redicrt("?do=viwe");
-                            }
+                            redirectHome('back');
+                           
+                        }
                 
 
 
@@ -521,10 +536,13 @@ if (isset($_POST["import"]))
 
 
 
+?>
 
+<?php
 
 
 
 }
+
 include $tpl  .'footer.php';
 ?>

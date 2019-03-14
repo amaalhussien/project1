@@ -3,6 +3,7 @@
  ?>
 <?php
  $noNavbar=' ';
+ $slideNavbar=' ';
  $pageTitle='log in';
 include 'init.php';
 
@@ -45,8 +46,8 @@ include 'init.php';
                }elseif($_SESSION['level']==4){
                 redicrt('sports_unit.php');
 
-             }elseif($_SESSION['level']==3){
-                redicrt('department.php');
+             }elseif($_SESSION['level']==8){
+                redicrt('Internal_section.php');
              }elseif($_SESSION['level']==3){
                 redicrt('department.php');
              }elseif($_SESSION['level']==3){

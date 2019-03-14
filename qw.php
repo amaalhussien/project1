@@ -1,3 +1,50 @@
+<?php
+$pageTitle='Internal_section';
+
+include 'init.php';
+?>
+<?php
+ $do = isset($_GET['do']) ? $_GET['do'] : 'manage';
+ if($do=='manage'){ 
+    ?>
+    <div class="formBox">
+        <div class="row">
+                     <div class="col-sm-12">
+                         <h1> الاقسام الداخليه جامعة واسط</h1>
+                         <?php echo msg(); ?>
+                                     <?php $errors=er(); ?>
+                                       <?php errors_function($errors);
+                                  ?>
+                     </div>
+                 </div>
+    
+
+        <div class="container">
+         <div class="row">
+                  <div class="col-sm-12">
+                      <h1> Student info</h1>			
+             </div>
+          </div>
+             <div class="site-info">
+ 
+               <form class="form-horizontal" action="?do=viwe" method="post"
+                         name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
+                                    <!--college start -->
+                                    <div class="inputBox" style="color: black;">
+                                     <div class="inputText" style="color: white;" >Colleges</div>
+                                       <select name="college"  class="input" >
+                                         <option value="0"></option>
+                                 <?php
+                                    
+                                        $query="SELECT `id_Colleges`, `name_Colleges` FROM `colleges` ";
+                                        $result=mysqli_query($conn,$query);
+                                        $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                        foreach ($row as $u){
+                                           echo "<option value='" . $u['id_Colleges'] . "'>" . $u['name_Colleges'] . "</option>";
+                                       }
+                                       ?>
+                                          </select>
+                                     </div>
 
 
 
@@ -6,95 +53,240 @@
 
 
 
-<div id="customers">
-        <table id="tab_customers" class="table table-striped" >
-            <colgroup>
-                <col width="20%">
-                <col width="20%">
-                <col width="20%">
-                <col width="20%">
-            </colgroup>
-            <thead>         
-                <tr class='warning'>
-                    <th>Country</th>
-                    <th>Population</th>
-                    <th>Date</th>
-                    <th>Age</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Chinna</td>
-                    <td>1,363,480,000</td>
-                    <td>March 24, 2014</td>
-                    <td>19.1</td>
-                </tr>
-                <tr>
-                    <td>India</td>
-                    <td>1,241,900,000</td>
-                    <td>March 24, 2014</td>
-                    <td>17.4</td>
-                </tr>
-                <tr>
-                    <td>United States</td>
-                    <td>317,746,000</td>
-                    <td>March 24, 2014</td>
-                    <td>4.44</td>
-                </tr>
-                <tr>
-                    <td>Indonesia</td>
-                    <td>249,866,000</td>
-                    <td>July 1, 2013</td>
-                    <td>3.49</td>
-                </tr>
-                <tr>
-                    <td>Brazil</td>
-                    <td>201,032,714</td>
-                    <td>July 1, 2013</td>
-                    <td>2.81</td>
-                </tr>
-            </tbody>
-        </table> 
-    </div>
-    <button onclick="javascript:demoFromHTML()">PDF</button>
-<script type="text/javascript">
-        function demoFromHTML() {
-            var pdf = new jsPDF('p', 'pt', 'letter');
-            // source can be HTML-formatted string, or a reference
-            // to an actual DOM element from which the text will be scraped.
-            source = $('#customers')[0];
 
-            // we support special element handlers. Register them with jQuery-style 
-            // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-            // There is no support for any other type of selectors 
-            // (class, of compound) at this time.
-            specialElementHandlers = {
-                // element with id of "bypass" - jQuery style selector
-                '#bypassme': function(element, renderer) {
-                    // true = "handled elsewhere, bypass text extraction"
-                    return true
-                }
-            };
-            margins = {
-                top: 80,
-                bottom: 60,
-                left: 40,
-                width: 522
-            };
-            // all coords and widths are in jsPDF instance's declared units
-            // 'inches' in this case
-            pdf.fromHTML(
-                    source, // HTML string or DOM elem ref.
-                    margins.left, // x coord
-                    margins.top, {// y coord
-                        'width': margins.width, // max width of content on PDF
-                        'elementHandlers': specialElementHandlers
-                    },
-            function(dispose) {
-                // dispose: object with X, Y of the last line add to the PDF 
-                //          this allow the insertion of new lines after html
-                pdf.save('Test.pdf');
+
+
+                                 <div class="inputBox" style="color: black;">
+                                     <div class="inputText" style="color: white;" >department</div>
+                                       <select name="department"  class="input" >
+                                         <option value="0"></option>
+                                 
+                                       <?php
+                                       $query="SELECT `id_department`, `name_department` FROM `department` ";
+                                       $result=mysqli_query($conn,$query);
+                                       $row=mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                       foreach ($row as $u){
+                                          echo "<option value='" . $u['id_department'] . "'>" . $u['name_department'] . "</option>";
+                                      }
+                                      ?>
+                                          </select>
+                                     </div>
+                              
+                               <input type="submit" value="search" class="btn btn-lg btn-block login_btn" name="import" 
+                                style="margin-top: 30px;margin-bottom: 23px;" >
+                                
+                                
+                 
+                               </div>
+                                 
+                            </div>     
+                    </form>
+ </div>
+     
+
+
+</div>
+                                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+ }elseif($do=='viwe'){
+
+    ?>
+    <div class="formBox">
+    <div class="row">
+                 <div class="col-sm-12">
+                     <h1> الاقسام الداخليه جامعة واسط</h1>
+                     <?php echo msg(); ?>
+                                 <?php $errors=er(); ?>
+                                   <?php errors_function($errors);
+                              ?>
+                 </div>
+             </div>
+
+<?php
+             if(isset($_POST['import'])){
+					
+						$college=$_POST["college"];
+                        $department=$_POST["department"];
+
+                       $_SESSION['dep']=$department;
+                       $_SESSION['col']=$college;
+                       
+                      
+                         
+                       
+
+                    }
+
+                    $dep=$_SESSION['dep'];
+                    $col=$_SESSION['col'];
+
+                        $sql="SELECT * FROM student WHERE `id_department`=$dep
+                         AND`id_college`=$col ";
+					   $result=mysqli_query($conn,$sql);
+                       if(mysqli_num_rows($result)>0)
+                       {
+   ?>
+
+              <div class="container">
+				<div class="table-responsive">
+					<table class="main-table text-center table table-bordered" 
+                    style="background-color:#214860; color:#fff;"
+                    
+                    >
+						<tr>
+							<td>#ID</td>
+							<td>fristname</td>
+							<td>lastname</td>
+							<td>Control</td>
+						</tr>
+						<?php 
+						while($row=mysqli_fetch_assoc($result)){
+                            echo "<tr>";
+                            echo "<td>" . $row['student_id'] . "</td>";
+                            echo "<td>" . $row['frist_name'] . "</td>";
+                            echo "<td>" . $row['last_name'] . "</td>";
+                            if ($row['Internal_section'] == 0) {
+                                echo "<td> <a href='?do=Approve&student_id=".$row['student_id'] . "' class='btn btn-info' ><i class='fa fa-check'></i></a></td>";
+                                    }else{
+                                        echo "<td> <a href='?do=notApprove&student_id=".$row['student_id'] . "' class='btn btn-danger' ><i class='fa fa-times' aria-hidden='true'></i></a>";
+                                    }
+                                echo "</td>";
+                            echo "</tr>";
+                        }
+                    }
+    
+                        ?>
+                        <?php
+                              ?>
+                            
+                        </table>
+                        </div>
+                    
+                     
+                     
+                     
+                     
+                     
+                     
+                                
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <?php
+  }elseif($do=='Approve')
+ {
+     echo "<h1 class='text-center'>Activate Member</h1>";
+     echo "<div class='container'>";
+ 
+         // Check If Get Request userid Is Numeric & Get The Integer Value Of It
+ 
+         $student = isset($_GET['student_id']) && is_numeric($_GET['student_id']) ? intval($_GET['student_id']) : 0;
+ 
+         // Select All Data Depend On This ID
+ 
+             $check=checkItem('student_id','student',$student);
+             if($check>0){
+             $sql="UPDATE  `student` SET `Internal_section`=1  WHERE student_id={$student} LIMIT 1";
+                 $result=mysqli_query($conn,$sql);
+                     if ( $result && mysqli_affected_rows($conn)>0) {
+                             
+                             
+                         $_SESSION['msg']=secusse_msg_palent();
+                         redirectHome($theMsg, 'back');
+                             
+                         }else{
+                             
+                             $_SESSION['msg']= error_msg_palent();
+                             redirectHome($theMsg, 'back');
+                             }
+                 
+ 
+ 
+ 
+             }					
+ 
+ 
+         
+ 
+ 
+ 
+ }elseif($do=='notApprove')
+ {
+     echo "<h1 class='text-center'>Activate Member</h1>";
+     echo "<div class='container'>";
+ 
+         // Check If Get Request userid Is Numeric & Get The Integer Value Of It
+ 
+         $student = isset($_GET['student_id']) && is_numeric($_GET['student_id']) ? intval($_GET['student_id']) : 0;
+ 
+         // Select All Data Depend On This ID
+ 
+             $check=checkItem('student_id','student',$student);
+             if($check>0){
+             $sql="UPDATE  `student` SET `Internal_section`=0  WHERE student_id={$student} LIMIT 1";
+                 $result=mysqli_query($conn,$sql);
+                     if ( $result && mysqli_affected_rows($conn)>0) {
+                             
+                             
+                         $_SESSION['msg']=secusse_msg_palent();
+                         redirectHome($theMsg, 'back');
+                             
+                         }else{
+                             
+                             $_SESSION['msg']= error_msg_palent();
+                             redirectHome($theMsg, 'back');
+                             }
+                 
+ 
+ 
+ 
+             }					
+ 
+ 
             }
-            , margins);
-        }
-    </script>
+ 
+ 
+ 
+ ?>
+
+ <?php
+ include $tpl  .'footer.php';
+ ?>
+                                               
+
+     

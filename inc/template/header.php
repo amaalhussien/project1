@@ -8,12 +8,27 @@
     <title><?php getTitle() ?></title>
         <link rel="stylesheet" href="<?php echo $css ?>bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo $css ?>font-awesome.min.css" />
+       <link rel="stylesheet" href="<?php echo $css ?>table/dataTables.bootstrap.min.css" /> 
+        <link rel="stylesheet" href="<?php echo $css ?>table/fixedHeader.bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo $css ?>jquery-ui.css" />
         <link rel="stylesheet" href="<?php echo $css ?>jquery.selectBoxIt.css" />
-        <link rel="stylesheet" href="<?php echo $css ?>backend.css" />
-	   <!--
-        <link rel="stylesheet" href="<?php echo $css ?>backend.css" />
--->
+       
+      <link rel="stylesheet" href="<?php echo $css ?>table/responsive.bootstrap.min.css" /> 
+      <link rel="stylesheet" href="<?php echo $css ?>backend.css" />
+      <link rel="stylesheet" href="<?php echo $css ?>style.css" />
+
+
+
+
+
+
+  <!--  margin-top: 10px;  -->
+
+
+
+
+
+
+
 </head>
 <body>
-

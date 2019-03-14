@@ -33,7 +33,7 @@ foreach ($namecollege as $coll){
             department.name_department AS department 
                 FROM student
              INNER JOIN colleges ON colleges.id_Colleges=student.id_college 
-            INNER JOIN department ON department.id_department=student.id_college
+            INNER JOIN department ON department.id_department=student.id_department
             WHERE(student.id_college=$college)
             ";
              $result=mysqli_query($conn,$query);

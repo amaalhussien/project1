@@ -30,6 +30,7 @@ body {
     -webkit-box-shadow: 0 3px 10px #CCC;
     -moz-box-shadow: 0 3px 10px #CCC;
     box-shadow: 0 3px 10px #CCC;
+    background-color: #3498db
 }
 
 .asd .formBox .main-table td {
@@ -116,12 +117,12 @@ body {
 }
 
 .social_icon span:hover {
-    color: white;
+    color: black;
     cursor: pointer;
 }
 
 .card-header h3 {
-    color: white;
+    color: black;
 }
 
 .social_icon {
@@ -221,7 +222,8 @@ input:focus {
 #main {
     transition: margin-left .5s;
     padding: 16px;
-    color: white;
+    color: black;
+    background-color: white;
 }
 
 @media screen and (max-height: 450px) {
@@ -235,6 +237,11 @@ input:focus {
 
 
 /* Start Dashboard Page */
+
+.asd {
+    background-color: white;
+    color: black;
+}
 
 .asd .formBox .home-stats .stat {
     font-size: 15px;
@@ -309,8 +316,7 @@ input:focus {
 }
 
 .asd .formBox .latest-users li:nth-child(odd) {
-    background-color: #336a8e;
-    ;
+    background-color: #e5e8ea;
 }
 
 .asd .formBox .latest-users .btn-success,

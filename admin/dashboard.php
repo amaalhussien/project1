@@ -91,7 +91,37 @@
 									if (! empty($latestUsers)) {
 										foreach ($latestUsers as $user){
 											echo '<li>';
-												echo $user['username'];
+												echo $user['username']." / ";
+												if($user['level']==1){
+													echo "Division registration";
+
+												}elseif($user['level']==2){
+													echo "Accounts";
+													
+												
+												}elseif($user['level']==3)
+												{
+													echo "department";
+												}
+												elseif($user['level']==4){
+													echo "Sports Unit";
+												}
+												elseif($user['level']==5){
+													echo "Free education";
+											
+												}	elseif($user['level']==6){
+													echo "College Library";
+												}
+												elseif($user['level']==7){
+													echo "Central Library";
+												}
+												elseif($user['level']==8){
+													echo "Internal_section";
+												}
+												
+												
+											
+
 												echo '<a href="admin.php?do=Edit&userid=' . $user['id'] . '">';
 													echo '<span class="btn btn-success pull-right">';
 														echo '<i class="fa fa-edit"></i> Edit';

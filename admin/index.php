@@ -52,7 +52,7 @@ exist();
 
 
 
-
+<body>
 <!-- Page Content -->
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
@@ -92,7 +92,7 @@ exist();
 
 
 
-
+</body>
 
 
 <?php

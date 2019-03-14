@@ -1,5 +1,6 @@
 <?php
 $pageTitle='account';
+$noNavbar=' ';
 include 'init.php';
 
 
@@ -16,6 +17,7 @@ foreach ($namecollege as $coll){
  if($do=='viwe'){
     
     ?>
+    <div class="asd">
         <div class="formBox">
         <div class="row">
                      <div class="col-sm-12">
@@ -35,7 +37,7 @@ foreach ($namecollege as $coll){
             department.name_department AS department 
                 FROM student
              INNER JOIN colleges ON colleges.id_Colleges=student.id_college 
-            INNER JOIN department ON department.id_department=student.id_college
+            INNER JOIN department ON department.id_department=student.id_department
             WHERE(student.id_college=$college)
             ";
 
@@ -56,24 +58,21 @@ foreach ($namecollege as $coll){
                 <div class="panel-heading">
                     <h3 class="panel-title">Student info</h3>
                     <div class="pull-right">
-                        <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                        <button class="btn btn-default btn-xs btn-filter" 
+                        ><span class="glyphicon glyphicon-filter"></span> Filter</button>
                     </div>
                 </div>
-                <table
-                class="main-table text-center table table-bordered"
-                style="background-color:#214860; color:#fff;"
-               
-                                       >
-                    <thead>
-                        <tr class="filters" style="background-color:#214860; color:#fff;">
-                            <th>#ID</th>
-                            <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="lastName" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="department" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="status" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="phase" disabled></th>
-                            <th>patent</th>
-                        </tr>
+                <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+              <thead>
+            <tr class="filters" style="background-color:#214860; color:#fff;">
+                       <th>#ID</th>
+                      <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
+                      <th><input type="text" class="form-control" placeholder="lastName" disabled></th>
+                      <th>status</th>      
+                     <th>status</th>      
+                <th>phase</th>
+                <th>palent</th>
+              </tr>
                     </thead>
                     <tbody>
                     <?php 
