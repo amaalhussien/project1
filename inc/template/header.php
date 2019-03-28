@@ -7,28 +7,16 @@
   
     <title><?php getTitle() ?></title>
         <link rel="stylesheet" href="<?php echo $css ?>bootstrap.min.css" />
+        <link rel="stylesheet" href="<?php echo $css ?>tabel/bootstrap_2.css"/>
+        <link rel="stylesheet" href="<?php echo $css ?>tabel/dataTables.bootstrap4.min.css"/>
+        <link rel="stylesheet" href="<?php echo $css ?>tabel/responsive.bootstrap4.min.css ">
         <link rel="stylesheet" href="<?php echo $css ?>font-awesome.min.css" />
-       <link rel="stylesheet" href="<?php echo $css ?>table/dataTables.bootstrap.min.css" /> 
-        <link rel="stylesheet" href="<?php echo $css ?>table/fixedHeader.bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo $css ?>jquery-ui.css" />
         <link rel="stylesheet" href="<?php echo $css ?>jquery.selectBoxIt.css" />
-       
-      <link rel="stylesheet" href="<?php echo $css ?>table/responsive.bootstrap.min.css" /> 
-      <link rel="stylesheet" href="<?php echo $css ?>backend.css" />
-      <link rel="stylesheet" href="<?php echo $css ?>style.css" />
-
-
-
-
-
-
-  <!--  margin-top: 10px;  -->
-
-
-
-
-
-
-
+         <link rel="stylesheet" href="<?php echo $css ?>backend6.css" /> 
+      <link rel="stylesheet" href="<?php echo $css ?>main.css" /> 
+	   <!--
+        <link rel="stylesheet" href="<?php echo $css ?>backend.css" />
+-->
 </head>
 <body>

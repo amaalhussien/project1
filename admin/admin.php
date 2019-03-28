@@ -20,30 +20,33 @@ if($do=='manage'){
     
 
     
-			$sql = '';
+			$sql ='';
 
 			if (isset($_GET['page']) && $_GET['page'] == 'Pending') {
 
 				$sql = 'AND RegStatus = 0';
 			}
-	               $query="SELECT `id`, `username`, `email`,Regstatus ,`level`,Date FROM `admin` WHERE `group_id`!=1  $sql";
+	               $query="SELECT `id`, `username`, `email`,Regstatus ,group_id,`level`,Date FROM `admin` WHERE `group_id`!=1  $sql";
                         $result=mysqli_query($conn,$query);
                         if(mysqli_num_rows($result)>0)
                         {
                           
 
 				?>
+				<!-- admin area strat -->
 		         <div class="formBox">
-				 <h1 class="text-center">Management of admin</h1>
+				 <h1 class="text-center">Management of employee</h1>
 
 			                    <?php echo msg(); ?>
                                 <?php $errors=er(); ?>
                                   <?php errors_function($errors);
-                             ?>
+                                 ?>
+								 <!--
 			<div class="container">
-			<a href="admin.php?do=Add" class="btn btn-primary">
-					<i class="fa fa-plus"></i> New Admin
-				</a>
+			<a href="admin.php?do=Add" class="btn btn-primary" style="margin-bottom: 14px;">
+					<i class="fa fa-plus"></i> New employee
+				</a> -->
+				<!--tabel admin info start -->
 				<div class="table-responsive">
 					<table class="main-table text-center table table-bordered" >
 						<tr>
@@ -52,13 +55,12 @@ if($do=='manage'){
 							<td>Email</td>
 							<td>Level</td>
 							<td>Registered Date</td>
-							
 							<td>Control</td>
 						</tr>
 						<?php 
 						while($row=mysqli_fetch_assoc($result)){
 						
-								echo "<tr>";
+								    echo "<tr>";
 									echo "<td>" . $row['id'] . "</td>";
 									echo "<td>" . $row['username'] . "</td>";
 									echo "<td>" . $row['email'] . "</td>";
@@ -90,13 +92,7 @@ if($do=='manage'){
 									elseif($row['level']==8){
 										echo "Internal_section";
 									}
-									echo  "</td>";
-									
-
-
-
-
-
+									echo "</td>";
 									echo "<td>" . $row['Date'] ."</td>";
 									echo "<td>
 										<a href='admin.php?do=Edit&userid=".$row['id'] . "' class='btn btn-success' ><i class='fa fa-edit'></i> Edit</a>
@@ -106,6 +102,12 @@ if($do=='manage'){
 													href='admin.php?do=Activate&userid=" . $row['id'] . "' 
 													class='btn btn-info activate'>
 													<i class='fa fa-check'></i> Activate</a>";
+										}if($row['group_id']==0 && $row['level']==0)
+										{
+											echo "<a 
+											href='admin.php?do=admins&userid=" . $row['id'] . "' 
+											class='btn btn-info activate'>
+											<i class='fa fa-check'></i>adminstration</a>";	
 										}
 									echo "</td>";
 								echo "</tr>";
@@ -114,21 +116,28 @@ if($do=='manage'){
 					<?php
 						  ?>
 						<tr>
+
 					</table>
+					<!-- table end -->
 				</div>
+				<!-- butten add new admin -->
 				<a href="admin.php?do=Add" class="btn btn-primary">
-					<i class="fa fa-plus"></i> New Admin
+					<i class="fa fa-plus"></i> New employee
 				</a>
+				<!--end butten -->
+			
 			</div>
 
-			<?php } else {
+			<?php } 
+			//if not found admin show butten add
+			else {
 
                      echo '<div class="container">';
                     	echo '<div class="nice-message">There\'s No Members To Show</div>';
 	                    echo '<a href="admin.php?do=Add" class="btn btn-primary">
-			            <i class="fa fa-plus"></i> New Admin
-	                     	</a>';
-                            echo '</div>';
+			         		  <i class="fa fa-plus"></i> New employee
+	                        	</a>';
+                     echo '</div>';
 
 						} ?>
 
@@ -136,9 +145,10 @@ if($do=='manage'){
 
 
 </div>
-
+<!--end manage page -->
 <?php  
-			}elseif ($do == 'Delete') { // Delete Member Page
+
+	     	}elseif ($do == 'Delete') { // Delete admin Page
 
 				echo "<h1 class='text-center'>Delete Member</h1>";
 				echo "<div class='container'>";
@@ -151,7 +161,6 @@ if($do=='manage'){
 
 					// Select All Data Depend On This ID
 
-					
 					// If There's Such ID Show The Form
 					 $check=checkItem('id','admin',$userid);
 					if($check>0){
@@ -164,7 +173,7 @@ if($do=='manage'){
 				   else{
 
 				   
-					$sql="DELETE FROM `admin` WHERE id={$userid} LIMIT 1";
+					   $sql="DELETE FROM `admin` WHERE id={$userid} LIMIT 1";
 						$result=mysqli_query($conn,$sql);
 							if ( $result && mysqli_affected_rows($conn)>0) {
 									
@@ -183,9 +192,9 @@ if($do=='manage'){
 
 					}	
 				}				
+//end delete page
 
-
-				}elseif ($do == 'Add') { // Add Page ?> 
+		}elseif ($do == 'Add') { // Add Page ?> 
 
             <div class="formBox">
 			<div class="row">
@@ -209,7 +218,7 @@ if($do=='manage'){
 					</div>
 				</div>
 					<!-- End Username Field -->
-					 <!-- Start Password Field -->
+			  <!-- Start Password Field -->
 				<div class="col-sm-6">
 					<div class="inputBox">
 						<div class="inputText">Password</div>
@@ -218,7 +227,7 @@ if($do=='manage'){
 					</div>
 				</div>
 			</div>
-
+           <!-- Start Email Field -->
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="inputBox">
@@ -226,8 +235,8 @@ if($do=='manage'){
 						<input  type="email" name="email" class="input"   required="required"  autocomplete="off"placeholder="Email Must Be Valid" >
 					</div>
 				</div>
-		
-		        <!--department strat -->
+			<!-- end  Email Field -->
+		        <!-- Start department Field -->
 				<div class="col-sm-3">
 					<div class="inputBox" style="color: black;">
 						<div class="inputText" style="color: white;" >Coleges</div>
@@ -245,7 +254,7 @@ if($do=='manage'){
 					</div>
 				</div>
 				<!--end dapatrment-->
-		    <!--college start -->
+		 <!-- Start colloge Field -->
 			<div class="col-sm-3">
 					<div class="inputBox" style="color: black;">
 						<div class="inputText" style="color: white;" >department</div>
@@ -263,7 +272,7 @@ if($do=='manage'){
 					</div>
 				</div>
 				<!--end colloge -->
-				<!--status start -->
+				<!-- Start status Field -->
 				<div class="col-sm-3">
 					<div class="inputBox" style="color: black;">
 						<div class="inputText" style="color: white;" >type</div>
@@ -282,15 +291,17 @@ if($do=='manage'){
 					</div>
 				</div>
 				</div>
-
+				<!-- end status Field -->
+             <!-- Start butten-->
 			<div class="row">
 				<div class="col-sm-12">
 				<input type="submit" value="save" class="btn btn-lg btn-block login_btn" name="submit" >
 				</div>
 			</div>
-
+       <!-- end butten  -->
 			
 	</form>
+	<!-- end form -->
 </div>
 </div>
 </div>
@@ -367,8 +378,7 @@ elseif($do=='Edit'){
 			
 						<div class="row">
 							<div class="col-sm-12">
-								<h1>Contact form</h1>
-								
+								<h1>Edit information</h1>
 							</div>
 						</div>
 			
@@ -400,8 +410,7 @@ elseif($do=='Edit'){
 									<input  type="email" name="email" class="input"  value="<?php echo $row['email'] ?>" required="required"  autocomplete="off" >
 								</div>
 							</div>
-                         <!--college start -->
-						 	        <!--department strat -->
+                 <!--college start -->
 				<div class="col-sm-3">
 					<div class="inputBox" style="color: black;">
 						<div class="inputText" style="color: white;" >Coleges</div>
@@ -425,7 +434,7 @@ elseif($do=='Edit'){
                        </select>
 					</div>
 				</div>
-				  <!--college start -->
+				  <!--department start -->
 			<div class="col-sm-3">
 					<div class="inputBox" style="color: black;">
 						<div class="inputText" style="color: white;" >department</div>
@@ -448,7 +457,7 @@ elseif($do=='Edit'){
                        </select>
 					</div>
 				</div>
-				<!--end colloge -->
+				<!--end department faild -->
 				<!--status start -->
 				<div class="col-sm-3">
 					<div class="inputBox" style="color: black;">
@@ -476,12 +485,13 @@ elseif($do=='Edit'){
 
 
 						</div>
+						<!-- butten start -->
 						<div class="row">
 							<div class="col-sm-12">
                             <input type="submit" value="save" class="btn btn-lg btn-block login_btn" name="submit" >
 							</div>
                         </div>
-
+                   <!--end butten -->
                         
 				</form>
 			</div>
@@ -513,25 +523,67 @@ elseif($do=='Edit'){
 						if ( $result && mysqli_affected_rows($conn)>0) {
 								
 								
-							$_SESSION['msg']=secusse_msg_delete();
+							$_SESSION['msg']=secusse_msg_activate();
 							redicrt("?do=manage");
 								
 							}else{
 								
-								$_SESSION['msg']= error_msg_delete();
+								$_SESSION['msg']= error_msg_activate();
 								redicrt("?do=manage");
 								}
 					
 
 
 
-				}					
+				}
+			}					
 
 
 			
-
+//end activate page
 	
-}elseif ($do == 'Update') { // Update Page
+				elseif ($do == 'admins') {
+
+					echo "<h1 class='text-center'> Member</h1>";
+					echo "<div class='container'>";
+			
+						// Check If Get Request userid Is Numeric & Get The Integer Value Of It
+			
+						$userid = isset($_GET['userid']) && is_numeric($_GET['userid']) ? intval($_GET['userid']) : 0;
+			
+						// Select All Data Depend On This ID
+			
+							$check=checkItem('id','admin',$userid);
+							if($check>0){
+							$sql="UPDATE  `admin` SET `group_id`=1  WHERE id={$userid} LIMIT 1";
+								$result=mysqli_query($conn,$sql);
+									if ( $result && mysqli_affected_rows($conn)>0) {
+											
+											
+										$_SESSION['msg']=secusse_msg_Edit();
+										redicrt("?do=manage");
+											
+										}else{
+											
+											$_SESSION['msg']= error_msg_change();
+											redicrt("?do=manage");
+											}
+								
+			
+			
+			
+							}					
+			
+			
+						
+			
+				
+			}
+
+
+
+
+elseif ($do == 'Update') { // Update Page
 
 				echo "<h1 class='text-center'>Update Member</h1>";
 				echo "<div class='container'>";

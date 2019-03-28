@@ -3,7 +3,7 @@
  ?>
 <?php
  $noNavbar=' ';
- $slideNavbar=' ';
+ $noNavbar1=' ';
  $pageTitle='log in';
 include 'init.php';
 
@@ -17,7 +17,14 @@ include 'init.php';
     
      $username1=mysqli_real_escape_string($conn,$username);
      $pass1=mysqli_real_escape_string($conn,$pass);
-     $sql="SELECT  id,`username`,`password`,`group_id`,`level`,id_collegee,id_department FROM`admin` WHERE `username`='{$username1}' AND Regstatus=1
+     $sql="SELECT  id,`username`,
+                 `password`,`group_id`,
+               `level`,id_collegee,id_department 
+          FROM
+             `admin` 
+          WHERE
+         `username`='{$username1}' AND Regstatus=1
+         AND `group_id`=0
       LIMIT 1";
      $result=mysqli_query($conn,$sql);
      $row=mysqli_fetch_assoc($result);
@@ -46,15 +53,21 @@ include 'init.php';
                }elseif($_SESSION['level']==4){
                 redicrt('sports_unit.php');
 
-             }elseif($_SESSION['level']==8){
-                redicrt('Internal_section.php');
-             }elseif($_SESSION['level']==3){
-                redicrt('department.php');
-             }elseif($_SESSION['level']==3){
-                redicrt('department.php');
-             }elseif($_SESSION['level']==3){
-                redicrt('department.php');
+             }elseif($_SESSION['level']==5){
+                redicrt('Free_education.php');
              }
+             elseif($_SESSION['level']==6){
+                redicrt('college_library.php');
+             }
+             elseif($_SESSION['level']==7){
+                redicrt('central_library.php');
+             }
+             
+             
+             elseif($_SESSION['level']==8){
+                redicrt('Internal_section.php');
+             }
+
 
             }
             
@@ -67,14 +80,28 @@ include 'init.php';
             
             
             
-            else{
-               
-            
+        else{    
+            echo 'password fialed';
             }
         }else{
-            
-           
-           
+                   $sql="SELECT  id,`username`,
+                          `password`,`group_id`,
+                                 `level`,id_collegee,id_department 
+                          FROM
+                                `admin` 
+                         WHERE
+                            `username`='{$username1}' AND `group_id`=1
+                         LIMIT 1";
+                          $result=mysqli_query($conn,$sql);
+                           $row=mysqli_fetch_assoc($result);
+                                 // If Count > 0 This Mean The Database Contain Record About This Username
+                 if($result && mysqli_affected_rows($conn)>0)
+                 {
+                    $_SESSION['admin_id']=$row['id'];
+                    $_SESSION['admin_name']=$row['username'] ;
+                    redicrt('index.php');
+                  
+                 }
         }
     
     }

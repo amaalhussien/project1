@@ -5,7 +5,7 @@ include 'init.php';
 
 <div class="overview text-center">
       <div class="container">
-        <h2 class="h1">System Electronic Patent Overview</h2>
+        <h2 class="h1">Acquittance Electronic system Overview</h2>
         <p>
         Almost all universities and colleges have introduced educational computer systems designed 
         to process their information  where the Universities are the main pillar in scientific research and education, and well as in the development and promotion of new talents.
@@ -21,7 +21,7 @@ include 'init.php';
         <div class="row">
           <div class="col-sm-12 col-lg-6">
             <div class="site-info">
-              <h2><span>system</span><span>Electronic</span></h2>
+              <h2><span>Acquittance </span><span> Electronic System</span></h2>
               <p>
               Almost all universities and colleges have introduced educational computer systems designed 
               to process their information  where the Universities are the main pillar in scientific research and education, and well as in the development and promotion of new talents.

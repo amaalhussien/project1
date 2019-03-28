@@ -3,7 +3,8 @@
    $pageTitle='Dashboard';
 
      include 'init.php';
-     check_login();
+	 check_login();
+	
 
 	 $numUsers = 6; // Number Of Latest Users
 	 $numcollege =8;
@@ -21,7 +22,7 @@
 						<div class="stat st-members">
 							<i class="fa fa-users"></i>
 							<div class="info">
-								Total Members
+								Total employee
 								<span>
 									<a href="admin.php?do=manage"><?php echo countItems('id', 'admin') ?></a>
 								</span>
@@ -32,7 +33,7 @@
 						<div class="stat st-pending">
 							<i class="fa fa-user-plus"></i>
 							<div class="info">
-								Pending Members
+								Pending employee
 								<span>
 									<a href="admin.php?page=Pending">
 										<?php echo checkItem("RegStatus", "admin", 0) ?>
@@ -80,7 +81,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<i class="fa fa-users"></i> 
-								Latest <?php echo $numUsers ?> Registerd Users 
+								Latest <?php echo $numUsers ?> Registerd employee
 								<span class="toggle-info pull-right">
 									<i class="fa fa-plus fa-lg"></i>
 								</span>

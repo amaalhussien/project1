@@ -4,7 +4,7 @@
  <div class="slider">
       <div id="main-slider" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <h1>system <br>  <span>Electronic patent</span>
+          <h1>Acquittance  <br> <span>Electronic system</span>
         </h1>
           <div class="overlay"></div>
           <div class="carousel-item carousel-one active">
@@ -24,4 +24,4 @@
 
     <!-- End Slider -->
     <!--start body -->
- 
+  

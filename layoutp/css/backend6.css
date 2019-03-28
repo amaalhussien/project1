@@ -6,7 +6,7 @@ body {
     font-family: 'Numans', sans-serif;
     height: 100%;
     width: 100%;
-    color: #fff;
+    color: #FFF;
 }
 
 .upper-bar {
@@ -151,7 +151,7 @@ body {
 }
 
 .slider .carousel-three {
-    background-image: url('images/Inside_keyboard.jpg');
+    background-image: url('images/GATE_Application-Form.jpeg');
 }
 
 .slider .carousel-indicators li {
@@ -235,7 +235,7 @@ body {
 
 .footer .site-info p {
     line-height: 1.8;
-    color: #f1f1f1
+    color: #727272
 }
 
 .footer .site-info a {
@@ -275,47 +275,6 @@ body {
 
 
 /* End Footer */
-
-.viwe {
-    color: #000000;
-    background-color: #5fc1cf29;
-}
-
-.viwe .contact ul li {
-    margin-bottom: 24px;
-}
-
-.viwe site-info a:before {
-    font-family: 'FontAwesome';
-    content: "\f138";
-    display: inline-block;
-    margin-right: 5px;
-}
-
-.viwe .site-info h2 {
-    font-size: 50px;
-    margin-bottom: 35px;
-}
-
-.viwe .site-info h2 span:first-child {
-    color: #08526d;
-    font-weight: bold;
-}
-
-.viwe .site-info h2 span:last-child {
-    color: #ec1c23;
-}
-
-.viwe .site-info p {
-    line-height: 1.8;
-    color: #000000;
-}
-
-.viwe .site-info a {
-    color: #08526d;
-    font-size: 15px;
-    font-weight: bold;
-}
 
 
 /* Start Copyright */
@@ -455,9 +414,8 @@ input:focus {
 /*registertion page */
 
 .asd {
-    padding: 4.4px;
-    background-color: #FFF;
-    color: #000000;
+    color: black;
+    background-color: #fff;
 }
 
 .asd .formBox h1 {

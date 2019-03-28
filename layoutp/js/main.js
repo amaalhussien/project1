@@ -19,7 +19,6 @@ $(function() {
     });
 
     // Adjust Slider Height
-
     var winH = $(window).height(),
         upperH = $('.upper-bar').innerHeight(),
         navH = $('.navbar').innerHeight();
@@ -35,7 +34,6 @@ $(function() {
             $($(this).data('class')).parent().css('opacity', 1);
         }
     });
-
 
 
 
@@ -85,6 +83,3 @@ $(function() {
 
 
 });
-
-
-//tabel sceipt

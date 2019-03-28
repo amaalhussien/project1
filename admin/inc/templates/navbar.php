@@ -24,14 +24,14 @@
         <a class="nav-link" href="dashboard.php"><?php echo lang('HOME_ADMIN');?><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="page.php">Link</a>
+        <a class="nav-link" href="admin.php">Admin area</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?php echo $_SESSION['admin_name']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item"  href="admin.php?page=Pending">Action</a>
           <a class="dropdown-item" href="admin.php?do=Edit&userid=<?php echo $_SESSION['admin_id']?>">EditProfile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout.php">Logout</a>

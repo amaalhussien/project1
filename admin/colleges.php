@@ -153,7 +153,7 @@ if($do=='manage'){
             <div class="col-sm-12">
                 <div class="inputBox">
                     <div class="inputText"> description</div>
-                    <textarea  type="email" name="description" class="input"   required="required"  autocomplete="off"placeholder="Email Must Be Valid"  rows="5"
+                    <textarea  type="email" name="description" class="input"   required="required"  autocomplete="off"placeholder="description college"  rows="5"
                     
                     style= "margin: 0px; height: 100px"></textarea>
                 </div>

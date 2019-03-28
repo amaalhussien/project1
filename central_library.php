@@ -10,10 +10,10 @@ include 'init.php';
  if($do=='manage'){ 
     ?>
    
-    <div class="formBox" style="margin-top: 40px;">
+    <div class="formBox">
         <div class="row">
                      <div class="col-sm-12">
-                         <h1> الاقسام الداخلية / جامعة واسط</h1>
+                         <h1> المكتبة المركزية / جامعة واسط</h1>
                          <?php echo msg(); ?>
                                      <?php $errors=er(); ?>
                                        <?php errors_function($errors);
@@ -122,7 +122,7 @@ include 'init.php';
                      <div class="col-sm-12">
                          <br>
                          <br>
-                         <h1>الاقسام الداخلية / جامعة واسط </h1>
+                         <h1> جامعة واسط/المكتبة المركزية</h1>
                          <?php echo msg(); ?>
                                      <?php $errors=er(); ?>
                                        <?php errors_function($errors);
@@ -137,7 +137,7 @@ include 'init.php';
                 FROM student
              INNER JOIN colleges ON colleges.id_Colleges=student.id_college 
             INNER JOIN department ON department.id_department=student.id_department
-            WHERE(student.id_college=$col AND student.id_department=$dep AND student.Internal_section=1 )
+            WHERE(student.id_college=$col AND student.id_department=$dep  )
             ";
 
 
@@ -189,9 +189,12 @@ include 'init.php';
                                 echo "<td>" . $row['phase'] ."</td>";
                               
                                 
-                             echo "<td>";  
-                              echo "<a href='?do=Approve&student_id=".$row['student_id'] . "' class='btn btn-info' ><i class='fa fa-check'></i></a>";
-                            echo "</td>";
+                                if ($row['central_library'] == 0) {
+                                    echo "<td> <a href='?do=Approve&student_id=".$row['student_id'] . "' class='btn btn-info' ><i class='fa fa-check'></i></a></td>";
+                                        }else{
+                                            echo "<td> <a href='?do=notApprove&student_id=".$row['student_id'] . "' class='btn btn-danger' ><i class='fa fa-times' aria-hidden='true'></i></a>";
+                                        }
+                                    echo "</td>";
                             echo "</tr>";
                         }
     
@@ -233,7 +236,7 @@ include 'init.php';
 
             $check=checkItem('student_id','student',$student);
             if($check>0){
-            $sql="UPDATE  `student` SET `Internal_section`=0  WHERE student_id={$student} LIMIT 1";
+            $sql="UPDATE  `student` SET `central_library`=1  WHERE student_id={$student} LIMIT 1";
                 $result=mysqli_query($conn,$sql);
                     if ( $result && mysqli_affected_rows($conn)>0) {
                             
@@ -256,8 +259,49 @@ include 'init.php';
 
 
 
+}elseif($do=='notApprove')
+{
+    echo "<h1 class='text-center'>Activate Member</h1>";
+    echo "<div class='container'>";
+
+        // Check If Get Request userid Is Numeric & Get The Integer Value Of It
+
+        $student = isset($_GET['student_id']) && is_numeric($_GET['student_id']) ? intval($_GET['student_id']) : 0;
+
+        // Select All Data Depend On This ID
+
+            $check=checkItem('student_id','student',$student);
+            if($check>0){
+            $sql="UPDATE  `student` SET `central_library`=0  WHERE student_id={$student} LIMIT 1";
+                $result=mysqli_query($conn,$sql);
+                    if ( $result && mysqli_affected_rows($conn)>0) {
+                            
+                            
+                       // $_SESSION['msg']=secusse_msg_palent();
+                       redirectHome('back');
+                            
+                        }else{
+                            
+                            //$_SESSION['msg']= error_msg_palent();
+                            redirectHome('back');
+                            }
+                
+
+
+
+            }					
+
+
+        
+
+
+
 }
 ?>
+
+
+
+
 
 
 

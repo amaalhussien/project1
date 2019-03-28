@@ -23,7 +23,7 @@ foreach ($namecollege as $coll){
                      <div class="col-sm-12">
                          <br>
                          <br>
-                         <h1> الحسابات <?php echo $coll['name_Colleges'] ?></h1>
+                         <h1> مجانية التعليم <?php echo $coll['name_Colleges'] ?></h1>
                          <?php echo msg(); ?>
                                      <?php $errors=er(); ?>
                                        <?php errors_function($errors);
@@ -86,7 +86,7 @@ foreach ($namecollege as $coll){
                                 echo "<td>" . $row['department'] ."</td>";
                                 echo "<td>" . $row['status'] . "</td>";
                                 echo "<td>" . $row['phase'] ."</td>";
-                                    if ($row['account'] == 0) {
+                                    if ($row['free_education'] == 0) {
                                 echo "<td> <a href='?do=Approve&student_id=".$row['student_id'] . "' class='btn btn-info' ><i class='fa fa-check'></i></a></td>";
                                     }else{
                                         echo "<td> <a href='?do=notApprove&student_id=".$row['student_id'] . "' class='btn btn-danger' ><i class='fa fa-times' aria-hidden='true'></i></a>";
@@ -148,7 +148,7 @@ foreach ($namecollege as $coll){
     
                 $check=checkItem('student_id','student',$student);
                 if($check>0){
-                $sql="UPDATE  `student` SET `account`=1  WHERE student_id={$student} LIMIT 1";
+                $sql="UPDATE  `student` SET `free_education`=1  WHERE student_id={$student} LIMIT 1";
                     $result=mysqli_query($conn,$sql);
                         if ( $result && mysqli_affected_rows($conn)>0) {
                                 
@@ -184,7 +184,7 @@ foreach ($namecollege as $coll){
     
                 $check=checkItem('student_id','student',$student);
                 if($check>0){
-                $sql="UPDATE  `student` SET `account`=0  WHERE student_id={$student} LIMIT 1";
+                $sql="UPDATE  `student` SET `free_education`=0  WHERE student_id={$student} LIMIT 1";
                     $result=mysqli_query($conn,$sql);
                         if ( $result && mysqli_affected_rows($conn)>0) {
                                 

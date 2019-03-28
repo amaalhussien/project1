@@ -109,7 +109,7 @@ foreach ($namecollege as $coll){
                                  <div class="inputBox" style="color: black;">
                                      <div class="inputText" style="color: white;" >department</div>
                                        <select name="department"  class="input" >
-                                         <option value="0"></option>
+                                         <option value="0">select department</option>
                                  <?php
                                        $query="SELECT `id_department`,`college_id`, `name_department` FROM `department`
                                               WHERE college_id=$college";
@@ -184,29 +184,30 @@ if (isset($_POST["import"]))
             foreach ($Reader as $Row)
             {
           
-                $name = "";
+                $fristname = "";
                 if(isset($Row[0])) {
                     $fristname = mysqli_real_escape_string($conn,$Row[0]);
                 }
-                
-                $description = "";
-                if(isset($Row[1])) {
-                    $lastname = mysqli_real_escape_string($conn,$Row[1]);
-                }
                 $phase = "";
-                if(isset($Row[2])) {
-                    $phase = mysqli_real_escape_string($conn,$Row[2]);
+                if(isset($Row[1])) {
+                    $phase = mysqli_real_escape_string($conn,$Row[1]);
                 }
                 $section = "";
-                if(isset($Row[3])) {
-                    $section = mysqli_real_escape_string($conn,$Row[3]);
+                if(isset($Row[2])) {
+                    $section = mysqli_real_escape_string($conn,$Row[2]);
                 }
               
 
                 if (!empty($fristname)||!empty($lastname)||!empty($phase)||!empty($section)) {
-                    $query = "insert into student(`frist_name`, `last_name`,`Internal_section`,`phase`,
+                      if($section=='نعم'){
+                          $section1=1;
+                      }else{
+                          $section1=0;
+                      }
+
+                    $query = "insert into student(`name_student`,`Internal_section`,`phase`,
                     `id_department`,`id_college`,`status`)  VALUES
-                    ('{$fristname}','{$lastname}','{$section}','{$phase}','{$department}','{$college}','{$stauts}'
+                    ('{$fristname}','{$section1}','{$phase}','{$department}','{$college}','{$stauts}'
                     )";
                     $result = mysqli_query($conn, $query);
                 
@@ -231,6 +232,7 @@ if (isset($_POST["import"]))
  }elseif($do=='viwe'){
     
 ?>
+     
     <div class="formBox">
     <div class="row">
                  <div class="col-sm-12">
@@ -272,20 +274,19 @@ if (isset($_POST["import"]))
                         <h5>عرض الطلاب</h5>
                     </div>
            <div class="ibox-content">
-           <table  id="example" class="table table-striped table-bordered table-hover  table-responsive
-           dataTables-example" 
-         style="width:100%;
+           <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%;
             background-color:#214860; color:#fff;">
                 <thead>
-                <tr class="filters" style="background-color:#214860; color:#fff;">
+                <tr class="filters" style="background-color: #f3f1f1;
+                                           color: #131212;">
                         <th>#ID</th>
-                        <th>Control</th>
-                        <th>Control</th>
+                        <th>name student</th>
+                        <td>college</th>
+                        <th>department</th>
+                        <th>status</th>
+                        <th>phase</th>
+                        <th>control</th>
                         <th>patent</th>
-                        <th>Control</th>
-                        <th>patent</th>
-                        <th>Control</th>
-                        <th>patent</th
                     </tr>
                 </thead>
                 <tbody>
@@ -295,8 +296,8 @@ if (isset($_POST["import"]))
 
                             echo "<tr>";
                             echo "<td>" . $row['student_id'] . "</td>";
-                            echo "<td>" . $row['frist_name'] . "</td>";
-                            echo "<td>" . $row['last_name'] . "</td>";
+                            echo "<td>" . $row['name_student'] . "</td>";
+                            echo "<td>" . $row['College_Name'] ."</td>";
                             echo "<td>" . $row['department'] ."</td>";
                             echo "<td>" . $row['status'] . "</td>";
                             echo "<td>" . $row['phase'] ."</td>";
@@ -537,7 +538,9 @@ if (isset($_POST["import"]))
 
 
 ?>
-
+</div>
+</div>
+</div>
 <?php
 
 

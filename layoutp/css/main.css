@@ -13,41 +13,12 @@ body {
     align-content: center;
 }
 
-.asd .formBox {
-    margin-top: 60px;
-    padding: 40px;
-}
-
 .asd .asterisk {
     font-size: 30px;
     position: absolute;
     right: 30px;
     top: 8px;
     color: #D20707;
-}
-
-.asd .formBox .main-table {
-    -webkit-box-shadow: 0 3px 10px #CCC;
-    -moz-box-shadow: 0 3px 10px #CCC;
-    box-shadow: 0 3px 10px #CCC;
-}
-
-.asd .formBox .main-table td {
-    vertical-align: middle !important;
-}
-
-.asd .formBox .main-table .btn {
-    padding: 3px 10px;
-}
-
-.asd .formBox .main-table tr:first-child td {
-    /* You Can Use Thead */
-    background: linear-gradient(to bottom, #000066 0%, #3366cc 100%);
-    color: #FFF;
-}
-
-.asd .formBox .activate {
-    margin-left: 5px;
 }
 
 .asd .formBox h1 {
@@ -82,7 +53,7 @@ body {
     outline: none;
     font-size: 24px;
     border-bottom: 1px solid rgba(0, 0, 0, .5);
-    color: #f1f1f1;
+    color: #000000;
 }
 
 .asd .focus .inputText {
@@ -184,55 +155,6 @@ input:focus {
     background-color: white;
 }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    background: linear-gradient(to bottom, #2d5e85 0%, #032727 100%);
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #f1f1f1;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-    color: white;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
-}
-
 
 /* Start Dashboard Page */
 
@@ -286,78 +208,46 @@ input:focus {
     background-color: #8e44ad;
 }
 
-.asd .formBox .latest {
-    margin-top: 30px;
+
+/* End Dashboard Page */
+
+.viwe {
+    color: #000000;
+    background-color: #5fc1cf29;
 }
 
-.asd .formBox .latest .toggle-info {
-    color: #999;
-    cursor: pointer
+.viwe .contact ul li {
+    margin-bottom: 24px;
 }
 
-.asd .formBox .latest .toggle-info:hover {
-    color: #444;
-}
-
-.asd .formBox .latest-users {
-    margin-bottom: 0;
-}
-
-.asd .formBox .latest-users li {
-    padding: 10px;
-    overflow: hidden;
-}
-
-.asd .formBox .latest-users li:nth-child(odd) {
-    background-color: #336a8e;
-    ;
-}
-
-.asd .formBox .latest-users .btn-success,
-.latest-users .btn-info {
-    padding: 2px 8px;
-}
-
-.asd .formBox .latest-users .btn-info {
+.viwe site-info a:before {
+    font-family: 'FontAwesome';
+    content: "\f138";
+    display: inline-block;
     margin-right: 5px;
 }
 
-.asd .formBox .latest .comment-box {
-    margin: 5px 0 10px;
+.viwe .site-info h2 {
+    font-size: 50px;
+    margin-bottom: 35px;
 }
 
-.asd .formBox .latest .comment-box .member-n,
-.latest .comment-box .member-c {
-    float: left;
+.viwe .site-info h2 span:first-child {
+    color: #08526d;
+    font-weight: bold;
 }
 
-.asd .formBox .latest .comment-box .member-n {
-    width: 80px;
-    text-align: center;
-    margin-right: 20px;
-    position: relative;
-    top: 10px;
+.viwe .site-info h2 span:last-child {
+    color: #ec1c23;
 }
 
-.asd .formBox .latest .comment-box .member-c {
-    width: calc(100% - 100px);
-    background-color: #EFEFEF;
-    padding: 10px;
-    position: relative;
+.viwe .site-info p {
+    line-height: 1.8;
+    color: #000000;
 }
 
-.asd .formBox .latest .comment-box .member-c:before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: -28px;
-    top: 5px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-color: transparent #EFEFEF transparent transparent;
-    border-width: 15px;
+.viwe .site-info a {
+    color: #08526d;
+    font-size: 15px;
+    font-weight: bold;
 }
-
-
-/* End Dashboard Page */

@@ -59,28 +59,27 @@ $namecollege=fetch('name_Colleges','colleges',$college);
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>عرض الطلاب</h5>
-                    </div>
-                    <div class="ibox-content">
-                <div class="pull-right">
-                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-                </div>
-            <table  id="example" class="table table-striped table-bordered table-hover dataTables-example" 
-            style="width:100%;
+                        </div>
+                        <div class="ibox-content">
+           <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%;
             background-color:#214860; color:#fff;">
                 <thead>
                     <tr class="filters" style="background-color:#214860; color:#fff;">
                         <th>#ID</th>
-                        <th>First Name</th>
-                        <th>lastName</th>
+                        <th>Name_Student</th>
                         <th>status</th>
                         <th>phase</th>
-                      <td>registertion</td>
-                      <td>account</td>
-                      <td>sport_unit</td>
-                      <td>Internal</td>
-                      <td>Internal</td>
-                      <td>Internal</td>
-                      <td>Internal</td>
+                        <th>registertion</th>
+                        <th>account</th>
+                    
+                        <th>sport_unit</th>
+                        <th>Internal_section</th>
+                        <th>free_education</th>
+                        <th>college_library</th>
+                        <th>central_library</th> 
+                      
+
+                        
                      
                        
                     </tr>
@@ -92,34 +91,63 @@ $namecollege=fetch('name_Colleges','colleges',$college);
 
                             echo "<tr>";
                             echo "<td>" . $row['student_id'] . "</td>";
-                            echo "<td>" . $row['frist_name'] . "</td>";
-                            echo "<td>" . $row['last_name'] . "</td>";
+                            echo "<td>" . $row['name_student'] . "</td>";
                             echo "<td>" . $row['status'] . "</td>";
                             echo "<td>" . $row['phase'] ."</td>";
-                            echo "<td>" . $row['phase'] ."</td>";
-                            echo "<td>" . $row['phase'] ."</td>";
-                            echo "<td>" . $row['phase'] ."</td>";
-          
-                                if ($row['registertion'] == 0) {
+                            
+                            if ($row['registertion'] == 0) {
                                 echo "<td><i class='fa fa-times' aria-hidden='true'>NO</i></td>";
                                 }else{
                                     echo "<td><i class='fa fa-check' aria-hidden='true'>Yes</i></td>";
                                 }
-                                if ($row['account'] == 0) {
-                                  echo "<td>NO</td>";
-                                  }else{
-                                      echo "<td>yes</td>";
-                                  }
-                                  if ($row['sport_unit'] == 0) {
-                                    echo "<td>NO</td>";
-                                    }else{
-                                        echo "<td>yes</td>";
-                                    }
-                                    if ($row['Internal_section'] == 0) {
-                                      echo "<td>NO</td>";
-                                      }else{
-                                          echo "<td>yes</td>";
-                                      }
+
+                                    if ($row['account'] == 0) {
+                                        echo "<td><i class='fa fa-times' aria-hidden='true'>NO</i></td>";
+                                        }else{
+                                            echo "<td><i class='fa fa-check' aria-hidden='true'>Yes</i></td>";
+                                        } 
+                                        
+                                        
+                                        if ($row['sport_unit'] == 0) {
+                                            echo "<td><i class='fa fa-times' aria-hidden='true'>NO</i></td>";
+                                            }else{
+                                                echo "<td><i class='fa fa-check' aria-hidden='true'>Yes</i></td>";
+                                            }
+
+                                        if ($row['Internal_section'] == 0) {
+                                            echo "<td><i class='fa fa-times' aria-hidden='true'>NO</i></td>";
+                                            }else{
+                                                echo "<td><i class='fa fa-check' aria-hidden='true'>Yes</i></td>";
+                                            }        
+
+
+
+                                            if ($row['free_education'] == 0) {
+                                                echo "<td><i class='fa fa-times' aria-hidden='true'>NO</i></td>";
+                                                }else{
+                                                    echo "<td><i class='fa fa-check' aria-hidden='true'>Yes</i></td>";
+                                                }        
+
+
+
+
+                                                if ($row['college_library'] == 0) {
+                                                    echo "<td><i class='fa fa-times' aria-hidden='true'>NO</i></td>";
+                                                    }else{
+                                                        echo "<td><i class='fa fa-check' aria-hidden='true'>Yes</i></td>";
+                                                    }        
+
+
+
+
+
+
+                                                    if ($row['central_library'] == 0) {
+                                                        echo "<td><i class='fa fa-times' aria-hidden='true'>NO</i></td>";
+                                                        }else{
+                                                            echo "<td><i class='fa fa-check' aria-hidden='true'>Yes</i></td>";
+                                                        }        
+                               
                                       
                            
                         echo "</tr>";
@@ -172,6 +200,9 @@ $namecollege=fetch('name_Colleges','colleges',$college);
 
 <?php
  }?>
+  </div>
+  </div>
+  </div>
   </div>
         <?php
         

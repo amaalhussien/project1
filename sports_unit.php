@@ -1,6 +1,9 @@
 <?php
-$pageTitle='Sports Unit';
+$pageTitle='sports_unit';
+$noNavbar=' ';
 include 'init.php';
+
+
 check_login_employe();
 ?>
 <?php
@@ -14,6 +17,7 @@ foreach ($namecollege as $coll){
  if($do=='viwe'){
     
     ?>
+    <div class="asd">
         <div class="formBox">
         <div class="row">
                      <div class="col-sm-12">
@@ -36,6 +40,9 @@ foreach ($namecollege as $coll){
             INNER JOIN department ON department.id_department=student.id_department
             WHERE(student.id_college=$college)
             ";
+
+
+
              $result=mysqli_query($conn,$query);
              if(mysqli_num_rows($result)>0)
              {
@@ -44,42 +51,38 @@ foreach ($namecollege as $coll){
     
     
           ?>
-        <div class="container">
-       
-        <hr style="border-top: 3px solid rgb(241, 25, 25)";>
-        <div class="row">
-            <div class="panel panel-primary filterable">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Student info</h3>
-                    <div class="pull-right">
-                        <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+       <div class="container">
+         <hr style="border-top: 3px solid rgb(241, 25, 25)";>
+          <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>عرض الطلاب</h5>
                     </div>
-                </div>
-                <table
-                class="main-table text-center table table-bordered"
-                style="background-color:#214860; color:#fff;"
-               
-                >
-                    <thead>
-                        <tr class="filters" style="background-color:#214860; color:#fff;">
-                            <th>#ID</th>
-                            <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="lastName" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="department" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="status" disabled></th>
-                            <th><input type="text" class="form-control" placeholder="phase" disabled></th>
-                            <th>patent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+      <div class="ibox-content">
+                    <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%;
+                             background-color:#214860; color:#fff;">
+                             <thead>
+                <tr class="filters" style="background-color: #f3f1f1;
+                                           color: #131212;">
+                        <th>#ID</th>
+                        <th>name student</th>
+                        <th>department</th>
+                        <th>status</th>
+                        <th>phase</th>
+                        <th>patent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                       
                     <?php 
                             while($row=mysqli_fetch_assoc($result)){
     
     
                                 echo "<tr>";
                                 echo "<td>" . $row['student_id'] . "</td>";
-                                echo "<td>" . $row['frist_name'] . "</td>";
-                                echo "<td>" . $row['last_name'] . "</td>";
+                                echo "<td>" . $row['name_student'] . "</td>";
                                 echo "<td>" . $row['department'] ."</td>";
                                 echo "<td>" . $row['status'] . "</td>";
                                 echo "<td>" . $row['phase'] ."</td>";
@@ -111,7 +114,7 @@ foreach ($namecollege as $coll){
         </div>
     </div>
      </div>
-    
+  
     
     
     <?php
@@ -150,13 +153,12 @@ foreach ($namecollege as $coll){
                         if ( $result && mysqli_affected_rows($conn)>0) {
                                 
                                 
-                            $_SESSION['msg']=secusse_msg_palent();
-                            redicrt("?do=viwe");
-                                
+                            //$_SESSION['msg']=secusse_msg_palent();
+                            redirectHome('back');      
                             }else{
                                 
-                                $_SESSION['msg']= error_msg_palent();
-                                redicrt("?do=viwe");
+                              //  $_SESSION['msg']= error_msg_palent();
+                                redirectHome('back');
                                 }
                     
     
@@ -187,13 +189,13 @@ foreach ($namecollege as $coll){
                         if ( $result && mysqli_affected_rows($conn)>0) {
                                 
                                 
-                            $_SESSION['msg']=secusse_msg_palent();
-                            redicrt("?do=viwe");
+                           // $_SESSION['msg']=secusse_msg_palent();
+                           redirectHome('back');
                                 
                             }else{
                                 
-                                $_SESSION['msg']= error_msg_palent();
-                                redicrt("?do=viwe");
+                                //$_SESSION['msg']= error_msg_palent();
+                                redirectHome('back');
                                 }
                     
     
@@ -207,6 +209,8 @@ foreach ($namecollege as $coll){
     
     
     }
+    ?>
+   
     
     
     
@@ -227,12 +231,13 @@ foreach ($namecollege as $coll){
     
     
     
+   </div>
+   </div>
+   </div>
     
+    <?php
     
-    
-    
-    
-    
+  
     
     }
     include $tpl  .'footer.php';

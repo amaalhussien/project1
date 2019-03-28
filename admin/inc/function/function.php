@@ -243,3 +243,25 @@ function getLatest($select, $table, $order, $limit = 5) {
     return $row;
 }
 
+function secusse_msg_activate()
+{
+    $emsg="<div class='alert alert-success alert-dismissible'>";
+    $emsg.="<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+    $emsg.="<strong>Success!</strong>Successful activate .";
+    $emsg.="</div>";
+
+   
+    return($emsg);
+   
+}
+
+function error_msg_activate()
+{
+    $emsg="<div class='alert alert-danger alert-dismissible'>";
+    $emsg.="<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+    $emsg.="<strong>Warning!</strong>cann’t activate.";
+    $emsg.="</div>";
+
+   
+    return($emsg); 
+}

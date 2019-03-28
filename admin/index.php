@@ -5,7 +5,7 @@
  $noNavbar=' ';
  $pageTitle='log in';
 include 'init.php';
-exist();
+
 
 ?>
 <?php
@@ -52,7 +52,7 @@ exist();
 
 
 
-<body>
+<body style="bacground-color:#000;">
 <!-- Page Content -->
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
