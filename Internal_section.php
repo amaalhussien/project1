@@ -2,12 +2,14 @@
 $pageTitle='Internal_section';
 $noNavbar=' ';
 include 'init.php';
+check_login_employe();
 ?>
 <div class="asd">
 <?php
 
  $do = isset($_GET['do']) ? $_GET['do'] : 'manage';
  if($do=='manage'){ 
+    if($_SESSION['level']==8){
     ?>
    
     <div class="formBox" style="margin-top: 40px;">
@@ -97,7 +99,11 @@ include 'init.php';
 
 
 <?php
+    }else{
+        redicrt('index.php');
+    }
  }elseif($do=='viwe'){
+    if($_SESSION['level']==8){
     
     if(isset($_POST['import'])){
            
@@ -219,6 +225,9 @@ include 'init.php';
 
 
 <?php
+    }else{
+        redicrt('index.php');
+    }
 
 }elseif($do=='Approve')
 {

@@ -1,5 +1,5 @@
 <?php
-$pageTitle='account';
+$pageTitle='college_library';
 $noNavbar=' ';
 include 'init.php';
 
@@ -15,6 +15,7 @@ foreach ($namecollege as $coll){
 
  $do = isset($_GET['do']) ? $_GET['do'] : 'viwe';
  if($do=='viwe'){
+    if($_SESSION['level']==6){
     
     ?>
     <div class="asd">
@@ -126,7 +127,9 @@ foreach ($namecollege as $coll){
     
     
     
-    
+                }else{
+                    redicrt('index.php');
+                }
     
     
     

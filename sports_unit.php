@@ -15,6 +15,7 @@ foreach ($namecollege as $coll){
 
  $do = isset($_GET['do']) ? $_GET['do'] : 'viwe';
  if($do=='viwe'){
+    if($_SESSION['level']==4){
     
     ?>
     <div class="asd">
@@ -118,6 +119,10 @@ foreach ($namecollege as $coll){
     
     
     <?php
+    }else
+    {
+        redicrt('index.php');
+    }
     
     
     

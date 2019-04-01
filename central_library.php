@@ -1,13 +1,15 @@
 <?php
-$pageTitle='Internal_section';
+$pageTitle='central_library';
 $noNavbar=' ';
 include 'init.php';
+check_login_employe();
 ?>
 <div class="asd">
 <?php
 
  $do = isset($_GET['do']) ? $_GET['do'] : 'manage';
  if($do=='manage'){ 
+    if($_SESSION['level']==7){
     ?>
    
     <div class="formBox">
@@ -97,7 +99,11 @@ include 'init.php';
 
 
 <?php
+    }else{
+        redicrt('index.php');
+    }
  }elseif($do=='viwe'){
+    if($_SESSION['level']==7){
     
     if(isset($_POST['import'])){
            
@@ -222,7 +228,9 @@ include 'init.php';
 
 
 <?php
-
+    }else{
+        redicrt('index.php');
+    }
 }elseif($do=='Approve')
 {
     echo "<h1 class='text-center'>Activate Member</h1>";

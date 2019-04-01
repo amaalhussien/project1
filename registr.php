@@ -15,10 +15,11 @@ foreach ($namecollege as $coll){
 
  $do = isset($_GET['do']) ? $_GET['do'] : 'manage';
  if($do=='manage'){ 
-   ?>
+    if($_SESSION['level']==1){
+    ?>
 
-    <div class="formBox">
-        <div class="dr" style="margin-top:89px;">
+    <div class="formBox"style="padding:120px;" >
+       
     <div class="row">
                  <div class="col-sm-12">
                      <h1> شعبة التسجيل <?php echo $coll['name_Colleges'] ?></h1>
@@ -70,11 +71,16 @@ foreach ($namecollege as $coll){
    </div>
    <?php
 
-
+    }else{
+        redicrt('index.php');
+        
+    }
 
  }elseif($do=='add')
  {
-     ?>
+    if($_SESSION['level']==1){
+    
+    ?>
 <div class="formBox">
     <div class="row">
                  <div class="col-sm-12">
@@ -154,9 +160,12 @@ foreach ($namecollege as $coll){
 
 <?php
 
+      }else{
+          redicrt('index.php');
+      }
 
- 
  }elseif($do=='insert'){
+   
     require_once('inc/Libraries/vendor/php-excel-reader/excel_reader2.php');
     require_once('inc/Libraries/vendor/SpreadsheetReader.php');
 
@@ -230,6 +239,7 @@ if (isset($_POST["import"]))
 
 
  }elseif($do=='viwe'){
+    if($_SESSION['level']==1){
     
 ?>
      
@@ -351,7 +361,9 @@ if (isset($_POST["import"]))
 
 
 
-
+            }else{
+                redicrt('index.php');
+            }
 
 
 

@@ -12,7 +12,8 @@ $namecollege=fetch('name_Colleges','colleges',$college);
 
 
  $do = isset($_GET['do']) ? $_GET['do'] : 'manage';
- if($do=='manage'){ 
+ if($do=='manage'){
+    if($_SESSION['level']==3) {
    ?>
    <div class="asd">
     <div class="formBox">
@@ -194,11 +195,14 @@ $namecollege=fetch('name_Colleges','colleges',$college);
 
 
 
-
+ 
 
 
 
 <?php
+}else{
+    redicrt('index.php'); 
+}
  }?>
   </div>
   </div>
